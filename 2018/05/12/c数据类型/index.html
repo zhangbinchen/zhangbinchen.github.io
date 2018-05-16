@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>C数据类型 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>C数据类型</h1>
+    </header>
+
+    <section>
+      <h3 id="C的32个关键字"><a href="#C的32个关键字" class="headerlink" title="C的32个关键字"></a>C的32个关键字</h3><ul>
+<li>数据类型关键字（12）<blockquote>
+<p>char,short,int,long,<br>float,double,unsigned,signed,<br>struct,union,enum,void</p>
+</blockquote>
+</li>
+<li>控制语句关键字（12）<blockquote>
+<p>if,else,switch,case,<br>default,for,do,while,<br>break,continue,goto,return</p>
+</blockquote>
+</li>
+<li>存储类关键字（5）<blockquote>
+<p>auto,extern,register,static,const</p>
+</blockquote>
+</li>
+<li>其他关键字（3）<blockquote>
+<p>sizeof,typedf,volatile</p>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="常量（在程序运行过程中，其值不能被改变的量）"><a href="#常量（在程序运行过程中，其值不能被改变的量）" class="headerlink" title="常量（在程序运行过程中，其值不能被改变的量）"></a>常量（在程序运行过程中，其值不能被改变的量）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926 <span class="comment">/*常量*/</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">short</span> a=<span class="number">10</span>; <span class="comment">/*const 关键字,限定一个变量为只读（常量）*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world,%d\n"</span>,a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>#define 宏名 宏值（没有；即结束标记）（推荐使用宏定义方式定义常量）</li>
+<li>匿名常量 “hello”、’A’、9、1.23</li>
+<li>const 类型 变量名=变量值。</li>
+</ul>
+<h3 id="标识符命名规则（变量和常量的统称）"><a href="#标识符命名规则（变量和常量的统称）" class="headerlink" title="标识符命名规则（变量和常量的统称）"></a>标识符命名规则（变量和常量的统称）</h3><ul>
+<li>标识符不能是关键字。如 system、main、printf</li>
+<li>只能由数字、字母、下划线组成    0-9/a-z/A-Z/_</li>
+<li>不能以数字开头</li>
+<li>大小写严格区分</li>
+</ul>
+<h3 id="变量（在使用前必须先定义，定义前必须有相应的数据类型）"><a href="#变量（在使用前必须先定义，定义前必须有相应的数据类型）" class="headerlink" title="变量（在使用前必须先定义，定义前必须有相应的数据类型）"></a>变量（在使用前必须先定义，定义前必须有相应的数据类型）</h3><ul>
+<li>变量三要素:变量类型、变量名、变量值</li>
+<li>可以通过其名字和地址访问相应的内存</li>
+<li>变量声明和变量定义的区别：<blockquote>
+<p>变量定义：给变量在内存中开辟存储空间<br>变量声明：不会给变量开辟存储空间。向系统注册该变量。</p>
+</blockquote>
+</li>
+<li>注意：编译器在编译至变量赋值处，发现该变量尚未被定义，会自动寻找变量声明，将该声明提升成定义（隐式声明），如果声名前有 extern 关键字，则提升失败。</li>
+</ul>
+<h4 id="eg"><a href="#eg" class="headerlink" title="eg:"></a>eg:</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;                 <span class="comment">/*extern关键字只作声明，不能作任何定义*/</span></span><br><span class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> a; <span class="comment">/*此处extern声明一个变量a，没有分配内存空间*/</span></span><br><span class="line">    a=<span class="number">10</span>;         <span class="comment">/*err,没有空间，不可赋值*/</span></span><br><span class="line">    <span class="keyword">int</span> b=<span class="number">10</span>;     <span class="comment">/*定义一个变量值b，b的类型为int，值为10*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="进制转换（8421码）"><a href="#进制转换（8421码）" class="headerlink" title="进制转换（8421码）"></a>进制转换（8421码）</h3><h4 id="二进制（2-0-2-10）"><a href="#二进制（2-0-2-10）" class="headerlink" title="二进制（2^0~2^10）"></a>二进制（2^0~2^10）</h4><p>计算机内部只采用二进制形式进行数据存储。<br>十进制转换二进制：除基逆取余（除二逆取余）<br>二进制转换十进制：按权展开再相加</p>
+<h4 id="8进制和16进制："><a href="#8进制和16进制：" class="headerlink" title="8进制和16进制："></a>8进制和16进制：</h4><ul>
+<li>以符号位为0表示八进制   最大数值为7  0~7   %o格式符打印</li>
+<li>以符号位为0x表示16进制  最大数值为F  0~9 ABCDEF  %x、%X格式符打印（大小写）<blockquote>
+<p>8进制转2进制： 04735—–421码    —–100 111 011 101<br>2进制转8进制： 010 100 101 110 101 001  —–0245651</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>16转2：0xFAC12 —-8421码  —-1111 1010 1100 0001 0010<br>2转16：0001 0100 1011 1010 1001 ———0x14BA9</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">123</span>;    <span class="comment">/*十进制方式赋值*/</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">076</span>;    <span class="comment">/*定义一个8进制数*/</span></span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0x7a</span>;   <span class="comment">/*定义一个16进制数*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"十进制：%d\n"</span>，t);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"八进制：%o\n"</span>,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"十六进制：%x\n"</span>,b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编码（原反补码）"><a href="#编码（原反补码）" class="headerlink" title="编码（原反补码）"></a>编码（原反补码）</h3><ul>
+<li>在计算机系统中，数值一律用补码来存储，主要原因是：<blockquote>
+<ul>
+<li>统一了零的编码</li>
+<li>将符号位和其他位统一处理</li>
+<li>将减法运算转变为加法运算</li>
+<li>两个用补码表示的数相加是，如果最高位（符号位）有进位，则进位被舍弃</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>char ch=10;</p>
+</blockquote>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>10+(-10)</th>
+<th style="text-align:center">78+(-34)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 原码： 0000 1010</td>
+<td style="text-align:center">78 补码： 0100 1110</td>
+</tr>
+<tr>
+<td>-10原码： 1000 1010</td>
+<td style="text-align:center">-34原码： 1010 0010</td>
+</tr>
+<tr>
+<td>10 反码： 0000 1010</td>
+<td style="text-align:center">-34反码： 1101 1101</td>
+</tr>
+<tr>
+<td>-10反码： 1111 0110</td>
+<td style="text-align:center">-34补码： 1101 1110</td>
+</tr>
+<tr>
+<td>10 补码： 0000 1010</td>
+</tr>
+<tr>
+<td>-10补码： 1111 0110</td>
+</tr>
+<tr>
+<td>10 + (-10)</td>
+<td style="text-align:center">78+（-34）</td>
+</tr>
+<tr>
+<td>0000 1010 + 1111 0110 = 0000 0000</td>
+<td style="text-align:center">0100 1110 + 1101 1110=0010 1100</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="整型：int"><a href="#整型：int" class="headerlink" title="整型：int"></a>整型：int</h3><blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">打印格式</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">大小</th>
+<th>示数范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td style="text-align:center">整型变量</td>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">十进制整型</td>
+<td style="text-align:center">4字节</td>
+<td>-2^31~+2^31-1(-2147483648~+2147483647)</td>
+</tr>
+<tr>
+<td>short:短整型变量</td>
+<td style="text-align:center">%hd</td>
+<td style="text-align:center">十进制短整型</td>
+<td style="text-align:center">2字节</td>
+<td style="text-align:center">-2^15~+2^15-1</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:center">长整形</td>
+<td style="text-align:center">%ld</td>
+<td style="text-align:center">十进制长整型</td>
+<td style="text-align:center">4字节</td>
+<td>不同平台不同系统中大小不同 4/8</td>
+</tr>
+<tr>
+<td>long long</td>
+<td style="text-align:center">长长整型</td>
+<td style="text-align:center">%lld</td>
+<td style="text-align:center">十进制长长整型</td>
+<td style="text-align:center">8字节</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h4 id="无符号整型"><a href="#无符号整型" class="headerlink" title="无符号整型"></a>无符号整型</h4><blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">打印格式</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">大小</th>
+<th style="text-align:center">示数范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unsigend int</td>
+<td style="text-align:center">%u</td>
+<td style="text-align:center">十进制无符号整型</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center">0~2^32-1 (0~4294967295)</td>
+</tr>
+<tr>
+<td>unsigend short</td>
+<td style="text-align:center">%hu</td>
+<td style="text-align:center">十进制无符号短整型</td>
+<td style="text-align:center">2字节</td>
+<td style="text-align:center">0~2^16-1</td>
+</tr>
+<tr>
+<td>unsigend long</td>
+<td style="text-align:center">%lu</td>
+<td style="text-align:center">十进制无符号长整型</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center">不同平台不同系统中大小不同</td>
+</tr>
+<tr>
+<td>unsigend long long</td>
+<td style="text-align:center">%llu</td>
+<td style="text-align:center">十进制无符号长长整型</td>
+<td style="text-align:center">8字节</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="整型变量的定义和输出"><a href="#整型变量的定义和输出" class="headerlink" title="整型变量的定义和输出"></a>整型变量的定义和输出</h3><blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">打印格式</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">输出一个有符号的10进制int类型</td>
+</tr>
+<tr>
+<td style="text-align:left">%o（字母o）</td>
+<td style="text-align:left">输出8进制int类型</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td style="text-align:left">输出16进制int类型，字母以小写输出</td>
+</tr>
+<tr>
+<td style="text-align:left">%X</td>
+<td style="text-align:left">输出16进制int类型，字母以大写输出</td>
+</tr>
+<tr>
+<td style="text-align:left">%u</td>
+<td style="text-align:left">输出一个10进制无符号数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sizeof-关键字"><a href="#sizeof-关键字" class="headerlink" title="sizeof 关键字"></a>sizeof 关键字</h4><blockquote>
+<p>sizeof(变量名)  ————返回该变量的大小，单位：整数字节<br>sizeof(类型名)  ————返回该数据类型的大小，单位：整数字节</p>
+</blockquote>
+<ul>
+<li>sizeof在系统内定义为：typedef unsigned int size_t 所以用%u匹配打印</li>
+<li>sizeof是C语言的内置运算符</li>
+<li>sizeof不是函数，它的功能是计算一个数据类型的大小，单位是字节</li>
+<li>sizeof的返回值为 size_t</li>
+<li>size_t类型在32位操作系统下是unsigned int（无符号整数）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">short</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">long</span> c = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> d = <span class="number">40</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\n"</span>,a);     <span class="comment">/* %d匹配int型数据 */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"b=%hd\n"</span>,b);    <span class="comment">/* %h匹配short型数据 */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"c=%ld\n"</span>,c);    <span class="comment">/* %ld匹配long型数据 */</span>  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"d=%lld\n"</span>,d);   <span class="comment">/* %lld匹配long long型数据 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">size_t</span> abc=<span class="number">10</span>;          <span class="comment">/* size_t类型在32位操作系统下是unsigned int（无符号整数）*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"abc=%u\n"</span>,abc); <span class="comment">/* 此处及以下均以无符号整型%u输出*/</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"int 型数据类型占用内存的大小 = %u字节\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"short 型数据类型占用内存的大小 = %u字节\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">short</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"long 型数据类型占用内存的大小 = %u字节\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">long</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"long long 型数据类型占用内存的大小 = %u字节\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">long</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字符型：char（本质就是一个字节大小的整型）"><a href="#字符型：char（本质就是一个字节大小的整型）" class="headerlink" title="字符型：char（本质就是一个字节大小的整型）"></a>字符型：char（本质就是一个字节大小的整型）</h3><ul>
+<li>一个字节（8 bit）%c 打印  有符号示数范围：-128~127（-2^7~+2^7-1） 无符号示数范围：0~255（0~2^8-1）</li>
+<li>‘0’ : ASCII 值—–48</li>
+<li>‘a’ : ASCII 值—–97</li>
+<li>‘A’ : ASCII 值—–65</li>
+<li>‘\0’: ASCII 值—–0            #define NULL ((void *)0)泛型指针</li>
+<li>‘\n’: ASCII 值—–10</li>
+<li>‘\t’: 按8字符做对齐输出。不足8字符用空格补齐</li>
+<li>注意：用单引号引起来的’a’表示字符常量a，双引号引起来的”a”表示字符串常量。不允许 </li>
+<li>‘abc’ 这种写法<br>有符号数和无符号输的区别：有符号数最高为符号位，0表示正数，1表示负数</li>
+</ul>
+<h4 id="转义序列（用于打印无法打印的ASCII字符）"><a href="#转义序列（用于打印无法打印的ASCII字符）" class="headerlink" title="转义序列（用于打印无法打印的ASCII字符）"></a>转义序列（用于打印无法打印的ASCII字符）</h4><blockquote>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">ASCII码值（十进制)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td style="text-align:center">警报</td>
+<td style="text-align:center">007</td>
+</tr>
+<tr>
+<td>\b</td>
+<td style="text-align:center">退格</td>
+<td style="text-align:center">008</td>
+</tr>
+<tr>
+<td>\f</td>
+<td style="text-align:center">换页</td>
+<td style="text-align:center">012</td>
+</tr>
+<tr>
+<td>\n</td>
+<td style="text-align:center">换行</td>
+<td style="text-align:center">010</td>
+</tr>
+<tr>
+<td>\r</td>
+<td style="text-align:center">回车</td>
+<td style="text-align:center">013</td>
+</tr>
+<tr>
+<td>\t</td>
+<td style="text-align:center">水平制表符</td>
+<td style="text-align:center">009</td>
+</tr>
+<tr>
+<td>\v</td>
+<td style="text-align:center">垂直制表符</td>
+<td style="text-align:center">011</td>
+</tr>
+<tr>
+<td>\</td>
+<td style="text-align:center">反斜杠（\）</td>
+<td style="text-align:center">092</td>
+</tr>
+<tr>
+<td>\’</td>
+<td style="text-align:center">单引号</td>
+<td style="text-align:center">039</td>
+</tr>
+<tr>
+<td>\”</td>
+<td style="text-align:center">双引号</td>
+<td style="text-align:center">034</td>
+</tr>
+<tr>
+<td>\?</td>
+<td style="text-align:center">问号</td>
+<td style="text-align:center">063</td>
+</tr>
+<tr>
+<td>\0</td>
+<td style="text-align:center">数字0</td>
+<td style="text-align:center">000</td>
+</tr>
+<tr>
+<td>\0dd</td>
+<td style="text-align:center">八进制值，d范围 0~7</td>
+<td style="text-align:center">3位8进制</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td style="text-align:center">十六进制值，h范围 0~9，a~f，A~F</td>
+<td style="text-align:center">3位16进制</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="数值溢出"><a href="#数值溢出" class="headerlink" title="数值溢出"></a>数值溢出</h3><p>当超过一个数据类型能够存放的最大范围时，数值会溢出</p>
+<h3 id="实型（浮点型）：float-至少六位有效数字-、double（十位以上有效数字）"><a href="#实型（浮点型）：float-至少六位有效数字-、double（十位以上有效数字）" class="headerlink" title="实型（浮点型）：float(至少六位有效数字)、double（十位以上有效数字）"></a>实型（浮点型）：float(至少六位有效数字)、double（十位以上有效数字）</h3><blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th style="text-align:center">大小（占用空间）</th>
+<th style="text-align:center">打印格式</th>
+<th style="text-align:center">小数点后有效数字范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">31位有效数字</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:center">%lf</td>
+<td style="text-align:center">63~64位有效数字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="布尔类型（Bool）"><a href="#布尔类型（Bool）" class="headerlink" title="布尔类型（Bool）"></a>布尔类型（Bool）</h3><p>布尔值表示true和false（C语言用1表示true，0表示false）。布尔类型是无符号int型，所占空间只要能够存储0或1即可。</p>
+<h3 id="类型限定符"><a href="#类型限定符" class="headerlink" title="类型限定符"></a>类型限定符</h3><table>
+<thead>
+<tr>
+<th>限定符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extern</td>
+<td>声明一个变量，extern声明的变量没有建立存储空间。extern int a;</td>
+</tr>
+<tr>
+<td>const</td>
+<td>定义一个常量，常量的值不能修改。const int a=10;</td>
+</tr>
+<tr>
+<td>Volatile</td>
+<td>防止编译器优化代码</td>
+</tr>
+<tr>
+<td>register</td>
+<td>定义寄存器变量，提高效率。register是建议型的指令，而不是命令型的指令，如果cpu有空闲的寄存器，那么register就生效，如果没有空闲的寄存器，那么register无效</td>
+</tr>
+</tbody>
+</table>
+<p>###字符串格式化输出和输入<br>字符串和字符常量不同：字符串在内存空间中是一段连续的char空间，以、0结尾<br>‘a’———-字符常量<br>“a”———-字符串常量（每个字符串的结尾编译器会自动加一个\0，所以“a”包含）<br>两个字符’a’和”\0”</p>
+<h3 id="printf函数和putchar函数"><a href="#printf函数和putchar函数" class="headerlink" title="printf函数和putchar函数"></a>printf函数和putchar函数</h3><ul>
+<li>printf是输出一个字符串，putchar输出一个char</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">打印格式</th>
+<th>对应数据类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td>int</td>
+<td>接收整数值并将它表示为有符号的十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%hd</td>
+<td>short int</td>
+<td>短整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%hu</td>
+<td>unsigned short</td>
+<td>无符号短整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%o</td>
+<td>unsigned int</td>
+<td>无符号八进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%u</td>
+<td>unsigned int</td>
+<td>无符号10进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%x,%X</td>
+<td>unsigned int</td>
+<td>无符号16进制整数，x对应的是abcdef，X对应的是ABCDEF</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td>float</td>
+<td>单精度浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">%lf</td>
+<td>double</td>
+<td>双精度浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">%e,%E</td>
+<td>double</td>
+<td>科学技术法表示的数，此处“e”的大小写代表在输出时用的“e”的大小写</td>
+</tr>
+<tr>
+<td style="text-align:center">%c</td>
+<td>char</td>
+<td>字符型。可以把输入的数字按照ASCII码相应转换为对应的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td>char *</td>
+<td>字符串，输出字符串中的字符直至字符串中的空字符（字符串以‘\0’结尾，’\0’即空字符）</td>
+</tr>
+<tr>
+<td style="text-align:center">%p</td>
+<td>void *</td>
+<td>以16进制形式输出指针</td>
+</tr>
+<tr>
+<td style="text-align:center">%%</td>
+<td>%</td>
+<td>输出一个%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>printf附加格式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l（字母l）</td>
+<td>附加在d,u,x,o前面，表示长整数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td>m（代表一个整数）</td>
+<td>数据最小宽度</td>
+</tr>
+<tr>
+<td>0（数字0）</td>
+<td>将输出的前面补上0，直到沾满制定列宽为止，不可以搭配使用-</td>
+</tr>
+<tr>
+<td>m.n</td>
+<td>m指域宽，及对应的输出项在输出设备上所占的字符数。n指精度，用于说明输出的实型数的小数位数。对数值型的来说，未指定n时，隐含的精度为n=6位</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scanf函数与getchar函数"><a href="#scanf函数与getchar函数" class="headerlink" title="scanf函数与getchar函数"></a>scanf函数与getchar函数</h3><ul>
+<li>scanf通过%转义的方式可以得到用户通过标准输入设备输入数据</li>
+<li>getchar是从标准输入设备读取一个char</li>
+<li>getchar()函数调用，可以造成进程阻塞等待。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch1;</span><br><span class="line">    <span class="keyword">char</span> ch2;</span><br><span class="line">    <span class="keyword">char</span> ch3;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入出ch1的字符："</span>);</span><br><span class="line">    ch1 = getchar();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ch1=%c\n"</span>,ch1);</span><br><span class="line">    </span><br><span class="line">    getchar();<span class="comment">/*测试此处getchar的作用*/</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入ch2的字符："</span>);</span><br><span class="line">    ch2=getchar();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\'ch2=%ctest\''\n"</span>,ch2);</span><br><span class="line">    </span><br><span class="line">    getchar();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入ch3的字符："</span>)；</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;ch3);<span class="comment">/*这里第二个参数一定是变量的地址，而不是变量名*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ch3=%c\n"</span>,ch3);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入a的值"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\n"</span>,a);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入b的值"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"b=%d\n"</span>,b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-05-11T16:00:00.000Z" itemprop="datePublished">
+              2018-05-12
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
