@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内存管理 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>内存管理</h1>
+    </header>
+
+    <section>
+      <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>c语言变量的作用域分为：</p>
+<blockquote>
+<p>代码块作用域<br>函数作用域<br>文件作用域</p>
+</blockquote>
+<p>一. 局部变量</p>
+<blockquote>
+<p>定义在函数内部的变量（auto关键字用来修饰局部变量通常可以省略）<br>如果没有赋初值，内容为随机。</p>
+</blockquote>
+<p>二.静态（static）局部变量</p>
+<blockquote>
+<p>static局部变量的作用域也是在定义的函数内有效<br>static局部变量的生命周期和程序运行的周期一样，同时static局部变量的值只初始化一次，但可以赋值多次<br>static局部变量若未赋以初值，则由系统自动赋值：数值型变量自动赋初值0，字符型变量赋空字符<br>如果局部变量和static变量重名采用就近原则</p>
+</blockquote>
+<a id="more"></a>
+<p>二.全局变量</p>
+<blockquote>
+<p>定义在函数外部的变量，随着程序的创建产生<br>全局变量的声明周期和程序运行周期一样<br>可被本文件及其他文件中的函数所共用，若其他文件中的函数调用此变量，需用extern声明<br>不同文件的全局变量不可重名<br>如果全局变量和局部变量重名，采用就近原则。</p>
+</blockquote>
+<p>三.静态（static）全局变量</p>
+<blockquote>
+<p>在函数外定义，作用范围被限制在所定义的文件中<br>不同文件静态全局变量可以重命名，但作用域不冲突<br>static全局变量的生命周期和程序运行周期一样,同时static全局变量的值只初始化一次</p>
+</blockquote>
+<p>四.extern全局变量声明</p>
+<blockquote>
+<p>extern int a；声明一个变量，这个全局变量在同项目的别的文件中已经定义了，这里只是声明，而不是定义</p>
+</blockquote>
+<p>五.全局函数和静态函数</p>
+<blockquote>
+<p>在c语言中函数默认都是全局的，使用关键字static可以将函数声明为静态，就意味着这个函数只能在定义这个函数的文件中使用，在其他文件中不能调用，即使在其他文件中声明这个函数都没有用<br>对于不同文件中的static函数名字可以相同</p>
+</blockquote>
+<ul>
+<li>注意：</li>
+<li>允许在不同的函数中使用相同的变量名，他们代表不同的对象，分配不同的单元，互不干扰。</li>
+<li>同一源文件中，允许全局变量和局部变量同名，在局部变量的作用域内，全局变量不起作用</li>
+<li>所有的函数默认都是全局的，意味着所有的函数都不能重名，但如果是static函数，那么作用域是文件级的，所以不同的文件static函数名是可以相同的。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:center">作用域</th>
+<th style="text-align:center">生命周期</th>
+<th style="text-align:center">存储位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto变量</td>
+<td style="text-align:center">一对{}内</td>
+<td style="text-align:center">当前函数</td>
+<td style="text-align:center">栈区</td>
+</tr>
+<tr>
+<td>static局部变量</td>
+<td style="text-align:center">一对{}内</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">初始化在data段，未初始化在bbs段</td>
+</tr>
+<tr>
+<td>extern变量</td>
+<td style="text-align:center">整个程序</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">初始化在data段，未初始化在bbs段</td>
+</tr>
+<tr>
+<td>static全局变量</td>
+<td style="text-align:center">当前文件</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">初始化在data段，未初始化在bbs段</td>
+</tr>
+<tr>
+<td>extern函数</td>
+<td style="text-align:center">整个程序</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">代码区</td>
+</tr>
+<tr>
+<td>static函数</td>
+<td style="text-align:center">当前文件</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">代码区</td>
+</tr>
+<tr>
+<td>register变量</td>
+<td style="text-align:center">一对{}内</td>
+<td style="text-align:center">当前函数</td>
+<td style="text-align:center">运行时存储在cpu寄存器</td>
+</tr>
+<tr>
+<td>字符串常量</td>
+<td style="text-align:center">当前文件</td>
+<td style="text-align:center">整个程序运行期</td>
+<td style="text-align:center">data段</td>
+</tr>
+<tr>
+<td>全局变量</td>
+<td style="text-align:center">整个程序</td>
+<td style="text-align:center">整个程序运行期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h3><h5 id="在程序没有加载到内存前："><a href="#在程序没有加载到内存前：" class="headerlink" title="在程序没有加载到内存前："></a>在程序没有加载到内存前：</h5><ul>
+<li>代码区（text区）<br>存放cpu执行的机器指令，通常代码区是可共享的，代码区通常是只读的</li>
+<li>全局初始化数据区/静态数据区（data段）<br>包含了在程序中明确被初始化的全局变量、已经初始化的静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）</li>
+<li>未初始化数据区（bss区）<br>存入的是全局未初始化变量和未初始化静态变量。未初始化数据区的数据在程序开始执行之前被内核初始化为0或者NULL</li>
+</ul>
+<p>程序在加载到内存前，代码区和全局区（data和bss）的大小是固定的，程序运行期间不能改变。然后，可运行执行程序，系统把程序加载到内存，除了根据可执行程序的信息分出代码区（text）、数据区（data）和未初始化数据区（bss）之外，还增加了栈区、堆区</p>
+<h5 id="系统把程序加载到内存："><a href="#系统把程序加载到内存：" class="headerlink" title="系统把程序加载到内存："></a>系统把程序加载到内存：</h5><ul>
+<li>代码区（text segment）<br>加载的是可执行文件代码段，所有的可执行代码都加载到代码区，这块内存是不可以在运行期间修改的</li>
+<li>未初始化数据区（BSS）<br>加载的是可执行文件BSS段，位置可以分开亦可以紧靠数据段，存储于数据段的数据（全局未初始化，静态未初始化数据）的生存周期为整个程序运行过程</li>
+<li>全局初始化数据区/静态数据区（data segment）<br>加载的是可执行文件数据段，存储于数据段（全局初始化，静态初始化数据，文字常量（只读））的数据的生存周期是整个程序运行过程</li>
+<li>栈区（stack）<br>栈是一种先进后出的内存结构，由编译器自动分配释放，存放函数的参数值、返回值、局部变量等。在程序运行过程中实时加载和释放，因此，局部变量的生存周期为申请到释放该段栈空间</li>
+<li>堆区（heap）<br>堆是一个大容器，它的容量要远远大于栈，但没有栈那样先进后出的顺序。用与动态内存分配。堆在内存中位于BSS区和栈区之间。一般由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收</li>
+</ul>
+<h3 id="内存操作函数"><a href="#内存操作函数" class="headerlink" title="内存操作函数"></a>内存操作函数</h3><ol>
+<li>memset（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memset</span><span class="params">(<span class="keyword">void</span> *s, <span class="keyword">int</span> c, <span class="keyword">size_t</span> n)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：将s的内存区域的前n个字节以参数c填入<br>参数： s:需要操作内存s的首地址<br>      c:填充的字符，c虽然参数为int，但必须是unsignedchar范围为0~255<br>      n：指定需要设置的大小<br>      返回值：s的首地址   </p>
+<ol start="2">
+<li>memcpy（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memcpy</span><span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：拷贝src所指的内存内容的前n个字节至dest所在的内存地址上<br>参数：dest：目的内存首地址<br>     src：源内存首地址<br>     n:需要拷贝的字节数<br>     返回值：dest的首地址</p>
+<ul>
+<li>注意：dest和src所指的内存空间不可重叠，可能会导致程序报错</li>
+</ul>
+<ol start="3">
+<li>memmove（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memove</span><span class="params">(<span class="keyword">void</span> *dest, <span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">size_t</span> n)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：memmove（）功能用法和memcpy（）一样，区别在于：dest和src所指的内存空间重叠时，memmove（）任然能处理，不过执行效率比memcpy低</p>
+<ol start="4">
+<li>memcmp（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">memcmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *s1, <span class="keyword">const</span> <span class="keyword">void</span> *s2, <span class="keyword">size_t</span> n)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：比较s1和s2所指向的内存区域的前n个字节<br>参数：s1：内存首地址1<br>     s2：内存首地址2<br>     n：需要比较的前n个字节<br>     返回值：相等=0；大于：&gt;0;小于：&lt;0</p>
+<h3 id="堆区内存分配和释放（malloc和free必须成对出现）"><a href="#堆区内存分配和释放（malloc和free必须成对出现）" class="headerlink" title="堆区内存分配和释放（malloc和free必须成对出现）"></a>堆区内存分配和释放（malloc和free必须成对出现）</h3><ol>
+<li>malloc（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">(<span class="keyword">size_t</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：在内存的动态存储区（堆区）中分配一块长度为size字节的连续区域，用来存放类型说明符指定的类型。分配的内存空间内容不确定，一般使用memset初始化<br>参数：size：需要分配内存大小（单位：字节）<br>返回值：成功：分配空间的起始地址<br>        失败：NULL</p>
+<ol start="2">
+<li>free（）<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>功能：释放ptr所指向的一块内存空间，ptr是一个任意类型的指针变量，指向被释放区域的首地址，对同一内存空间多次释放会出错。<br>参数：ptr：需要释放空间的首地址，被释放区应是由malloc函数所分配的区域<br>返回值：无</p>
+<h6 id="申请一个二级指针地址"><a href="#申请一个二级指针地址" class="headerlink" title="申请一个二级指针地址"></a>申请一个二级指针地址</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*int *arr[10];*/</span></span><br><span class="line">    <span class="keyword">int</span> **p = (<span class="keyword">int</span> **)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *)* <span class="number">3</span>);<span class="comment">/*申请二级指针对应的内存空间---int *arr[]  */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">3</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)* <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            p[i][j] = i + j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,p[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>;i++)<span class="comment">/*释放内存空间，先释放内层空间*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">free</span>(p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);                <span class="comment">/*释放外层空间*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-05-22T16:00:00.000Z" itemprop="datePublished">
+              2018-05-23
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

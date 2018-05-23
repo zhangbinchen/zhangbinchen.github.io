@@ -57,6 +57,68 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/05/23/内存管理/">内存管理</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-22T16:00:00.000Z" itemprop="datePublished">
+    2018-05-23
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>c语言变量的作用域分为：</p>
+<blockquote>
+<p>代码块作用域<br>函数作用域<br>文件作用域</p>
+</blockquote>
+<p>一. 局部变量</p>
+<blockquote>
+<p>定义在函数内部的变量（auto关键字用来修饰局部变量通常可以省略）<br>如果没有赋初值，内容为随机。</p>
+</blockquote>
+<p>二.静态（static）局部变量</p>
+<blockquote>
+<p>static局部变量的作用域也是在定义的函数内有效<br>static局部变量的生命周期和程序运行的周期一样，同时static局部变量的值只初始化一次，但可以赋值多次<br>static局部变量若未赋以初值，则由系统自动赋值：数值型变量自动赋初值0，字符型变量赋空字符<br>如果局部变量和static变量重名采用就近原则</p>
+</blockquote>
+        
+          <div class="more-link">
+            <a href="/2018/05/23/内存管理/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/05/18/指针/">指针</a>
         </h1>
       
@@ -92,81 +154,12 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> b=<span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,%p\n"</span>,&amp;a,&amp;b); <span class="comment">/*打印a，b的地址*/</span></span><br><span class="line">             <span class="comment">/*定义了一个指针类型的变量，可以指向一个int类型变量的地址*/</span></span><br><span class="line">    <span class="keyword">int</span> *p; <span class="comment">/*int*代表的是一种数据类型，int*指针类型，p才是变量名*/</span>        </span><br><span class="line">    p=&amp;a;  <span class="comment">/*将a的地址赋值给变量p，p也是一个变量，值是一个内存地址编号*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,*p);<span class="comment">/*p指向了a的地址，*p就是a的值*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *p1=&amp;b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c\n"</span>,*p1);  <span class="comment">/*p1指向了b的地址，*p1就是b的值*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>注意：&amp;可以取得一个变量在内存中的地址，但是，不能取及寄存器变量，因为寄存器变量不再内存里，而在cpu里面，所以是没有地址的。</li>
-</ul>
-<h3 id="指针大小："><a href="#指针大小：" class="headerlink" title="指针大小："></a>指针大小：</h3><blockquote>
-<ul>
-<li>指针的大小：指针的大小与类型无关，只与平台架构有关。32位系统为4字节，64位系统为8字节</li>
-<li>sizeof(int <em>)==sizeof(char </em>)==sizeof(long <em>)==sizeof(longlong </em><br>在32位平台所有指针都是32位（4字节）<br>在64位平台，所有指针都是64位（8字节）</li>
-</ul>
-</blockquote>
-<h3 id="通过指针间接修改变量的值"><a href="#通过指针间接修改变量的值" class="headerlink" title="通过指针间接修改变量的值"></a>通过指针间接修改变量的值</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>,b=<span class="number">23</span>;</span><br><span class="line">    <span class="keyword">int</span> *p=&amp;a,*p2=&amp;b;</span><br><span class="line">    *p=<span class="number">100</span>;</span><br><span class="line">    *p=<span class="number">200</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\nb=%d\n"</span>,*p,*p2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><em>p的含义，将p变量的内容取出来，当成地址看待，找到该地址。入托\</em>P在=左侧，指代该空间，如果在=右侧，取出该变量的值</li>
-</ul>
-<h3 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h3><ul>
-<li>指针变量也是变量，是变量就可以任意赋值，不要越界即可（32位为4字节，64位为8字节），但是，任意数值赋值给指针变量没有意义，因为这样的指针就变成了野指针，此指针指向的区域是未知（操作系统不允许操作此指针指向的内存区域）。所以，野指针不会直接引发错误，操作野指针指向内存区域才会出现问题。</li>
-<li>定义，但未指定有效地址的指针</li>
-<li>编程时务必避免出现野指针</li>
-</ul>
-<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3><ul>
-<li>野指针和有效指针变量保存的都是数值，为了标志此指针变量没有指向任何变量（空闲可用），c语言中可以把NULL赋值给此指针，这样就标志此指针为空指针，没有任何指针。</li>
-<li>int <em>p=NULL;    NULL：#define NULL（（void </em>）0）<br>在指针刚刚定义之初，指定指针为 NULL;<br>在明确指针不再使用的地方。手动置为NULL;</li>
-</ul>
-<h3 id="泛型指针-（void-）"><a href="#泛型指针-（void-）" class="headerlink" title="泛型指针 （void *）"></a>泛型指针 （void *）</h3><ul>
-<li>！=void</li>
-<li>泛型指针可以接受任意数据类型的地址</li>
-<li>void *指针可以指向任意变量的内存空间</li>
-<li>泛型指针不可以直接间接引用读取数据。必须要强转为具体数据类型<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">void</span> *p=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">    p=(<span class="keyword">void</span> *)&amp;a;   <span class="comment">/*指向变量时，最好转换为void*  */</span></span><br><span class="line">    *((<span class="keyword">int</span> *)p)=<span class="number">11</span>; <span class="comment">/*使用指针变量指向内存时，转换为int*  */</span>  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a=%d\n"</span>,a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="const修饰的指针变量"><a href="#const修饰的指针变量" class="headerlink" title="const修饰的指针变量"></a>const修饰的指针变量</h3><ol>
-<li>const int <em>p<br>p可改变
-</em>p不可改变</li>
-<li>int const <em>P<br>p可改变
-</em>p不可改变</li>
-<li>int <em>const p；<br>p不可以改变
-</em>p可以改变</li>
-<li>const int <em>const p<br>p不可以改变
-</em>p不可以改变</li>
-</ol>
-<ul>
-<li>const向右，先知道谁，谁就不能改变</li>
-<li>通常用于函数形参修饰，限制参数不可改变（传入参数）</li>
-</ul>
-<h3 id="指针和数组"><a href="#指针和数组" class="headerlink" title="指针和数组"></a>指针和数组</h3><ul>
-<li>数组名是地址常量。不能被赋值但可以赋值给指针变量<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> *p=arr;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(p[<span class="number">0</span>]); <span class="comment">/*求数组元素个数*/</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,*(p+i));</span><br><span class="line">        <span class="comment">/*printf("%d",arr[i]); </span></span><br><span class="line"><span class="comment">        printf("%d",p[i]);        //四者等价</span></span><br><span class="line"><span class="comment">        printf("%d",*(arr+i);*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);  <span class="comment">/*等同于：printf("\n");*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="指针操作数组-代码如上"><a href="#指针操作数组-代码如上" class="headerlink" title="指针操作数组(代码如上)"></a>指针操作数组(代码如上)</h3><blockquote>
-<p>int arr[]={0,1,3,4,5,5,6,88,9};<br>int <em>p=arr;<br>结论：p[i]==arr[i]==</em>(arr+i)==*（p+i）<br>p、arr在读数组元素过程中，不会变化</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p=&amp;arr[<span class="number">5</span>];   <span class="comment">/* *p=arr=&amp;arr[0]*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p[-2]=%d\n"</span>,p[<span class="number">-2</span>]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"*(p-2)=%d\n"</span>,*(p<span class="number">-2</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>指针和数组名的区别：</li>
-</ul>
-<ol>
-<li>指针是变量，可以赋值。数组名是常量，不能被赋值</li>
-<li>sizeof（p）获取的是指针大小，sizeof(数组)得到数组的实际大小</li>
-</ol>
-<ul>
-<li><p>直接使用指针操作数组：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> *p=arr;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,*p);</span><br><span class="line">        p++;                 <span class="comment">/*循环结束p变成一个野指针*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    p=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,*p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结论：p会随着读取数据元素不断变化，结束时变成一个野指针</p>
-</li>
-</ul>
-<h3 id="指针的算术运算"><a href="#指针的算术运算" class="headerlink" title="指针的算术运算"></a>指针的算术运算</h3><h5 id="普通变量中的应用"><a href="#普通变量中的应用" class="headerlink" title="普通变量中的应用"></a>普通变量中的应用</h5><ul>
-<li>指针乘除：无意义。error！！！</li>
-<li>指针加减整数：<blockquote>
-<p>指针计算不是简单的整数相加<br>指针+1，实际加sizeof（指针前面数据类型）的大小<br>如果是一个int<em>，+1得结果是增加一个int的大小即sizeof（int）=4<br>如果是一个char</em>，+1的结果是增加一个char大小即sizeof（char）=1</p>
-</blockquote>
-</li>
-<li>指针减整数类似加法<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0x12345678</span>;</span><br><span class="line">    <span class="keyword">short</span> *p=&amp;a;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p=%p\n"</span>,p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p+1=%p\n"</span>,p+<span class="number">4</span>); <span class="comment">/*sizeof(short)*4=8*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="数组中的应用"><a href="#数组中的应用" class="headerlink" title="数组中的应用"></a>数组中的应用</h5><p>由于数组中的数组元素是连续存储、类型一致。所以可以使用指针+-整数来取出数组元素</p>
-
+<li>注意：&amp;可以取得一个变量在内存中的地址，但是，不能取及寄存器变量，因为寄存器变量不再内存里，而在cpu里面，所以是没有地址的。
+        
+          <div class="more-link">
+            <a href="/2018/05/18/指针/#more">Read On »</a>
+          </div>
+        
       
     </div>
 </article>
