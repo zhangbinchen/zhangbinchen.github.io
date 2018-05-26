@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>结构体 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>结构体</h1>
+    </header>
+
+    <section>
+      <h3 id="结构体定义"><a href="#结构体定义" class="headerlink" title="结构体定义"></a>结构体定义</h3><ul>
+<li><p>结构体定义语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;            <span class="comment">/*成员变量*/</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];      <span class="comment">/*不允许赋初值*/</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;;           <span class="comment">/*仅仅是一个数据类型*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构体变量定义及初始化</p>
+</li>
+</ul>
+<ol>
+<li>定义结构体变量的方式：</li>
+</ol>
+<ul>
+<li>先声明结构体类型在定义变量名</li>
+<li>在声明类型的同时定义变量</li>
+<li>直接定义结构体类型变量（无类型名）</li>
+</ul>
+<a id="more"></a>
+<ol start="2">
+<li>结构体类型和结构体变量关系：</li>
+</ol>
+<ul>
+<li>结构体类型：指定了一个结构体类型，它相当于一个模型，但其中并无具体数据，系统对之也不分配实际内存单元。</li>
+<li>结构体变量：系统根据结构体类型（内部成员状况）为之分配空间</li>
+<li>通常结构体定义位于全局位置。放在全局.h文件中。</li>
+<li>.h文件可以存放：<blockquote>
+<p>#includ&lt;xxx.h&gt; “xxx.h”<br>函数声明（函数原型）<br>变量声明<br>结构体类型定义<br>宏定义<br>头文件守卫:#ifndef_XXX_H_       #define_XXX_</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*普通变量*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu</span>=&#123;</span><span class="number">18</span>,<span class="string">"afie"</span>,<span class="number">96</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu2</span>;</span></span><br><span class="line">stu2.age=<span class="number">17</span>;</span><br><span class="line"><span class="built_in">strcpy</span>(stu.name,<span class="string">"andy"</span>);</span><br><span class="line">stu2.num=<span class="number">99</span>;</span><br><span class="line"><span class="comment">/*指针变量【避免野指针】*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">studnet</span> *<span class="title">p</span>=&amp;<span class="title">stu</span>;</span></span><br><span class="line">p-&gt;age=<span class="number">99</span>;</span><br><span class="line"><span class="built_in">strcpy</span>(p-name-&gt;name,<span class="string">"lucy"</span>);</span><br><span class="line">p-&gt;num=<span class="number">23</span>;</span><br><span class="line"><span class="comment">/*其他写法*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];<span class="comment">//char *name</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;obj1,boj2,obj5=&#123;<span class="number">18</span>,<span class="string">"fei"</span>,<span class="number">97</span>&#125;;<span class="comment">/*定义类型的同时定义变量*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="结构体成员的使用"><a href="#结构体成员的使用" class="headerlink" title="结构体成员的使用"></a>结构体成员的使用</h3><ul>
+<li>访问结构体成员的方法：<blockquote>
+<p>普通变量：使用“ . ”号访问。(<em>obj4).age/ (</em>obj4).name/(*obj4).num;<br>指针变量：使用” -&gt; “访问。(&amp;obj5)-&gt;age/(&amp;obj5)-&gt;name/(&amp;obj5)-&gt;num;<br>【注意】：指针不能是野指针！！！<br>【结论】：结构体的数组成员，如果没有在定义时初始化，那么后期赋值，只能使用strcpy、strncpy、memcpy、</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span>           /*定义结构体类型*/</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name [<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> 1;</span></span><br><span class="line">    <span class="built_in">strcpy</span>(s1.name,<span class="string">"abc"</span>);   <span class="comment">/*如果是普通变量，通过点运算符操作结构体成员*/</span></span><br><span class="line">    s1.aeg=<span class="number">18</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"s1.name=%s,s1.age=%d\n"</span>,s1.name,s1.age);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">strcpy</span>((&amp;s1)-&gt;name,<span class="string">"test"</span>);<span class="comment">/*如果是指针变量，通过-&gt;操作结构体成员*/</span></span><br><span class="line">    (&amp;s1)-&gt;age=<span class="number">22</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"(&amp;s1)-&gt;name=%s,(&amp;s1)-&gt;age=%d\n"</span>,(&amp;s1)-&gt;name,(&amp;s1)-&gt;age);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结构体数组"><a href="#结构体数组" class="headerlink" title="结构体数组"></a>结构体数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">    <span class="keyword">float</span> score;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">boy</span>[5]=         /*定义一个含有5个元素的结构体数组并将其初始化*/</span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        &#123;<span class="number">101</span>,<span class="string">"mike"</span>,<span class="string">'M'</span>,<span class="number">45</span>&#125;,</span><br><span class="line">        &#123;<span class="number">102</span>,<span class="string">"liliy"</span>,<span class="string">'M'</span>,<span class="number">64</span>&#125;,</span><br><span class="line">        &#123;<span class="number">103</span>,<span class="string">"hane"</span>,<span class="string">'F'</span>,<span class="number">99</span>&#125;,</span><br><span class="line">        &#123;<span class="number">104</span>,<span class="string">"chen"</span>,<span class="string">'M'</span>,<span class="number">80</span>&#125;,</span><br><span class="line">        &#123;<span class="number">105</span>,<span class="string">"ge"</span>,<span class="string">'F'</span>,<span class="number">50</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> c=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">float</span> ave,s=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s+=boy[i].score;        <span class="comment">/*计算总分*/</span></span><br><span class="line">        <span class="keyword">if</span>(boy[i].score&lt;<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            c+=<span class="number">1</span>;               <span class="comment">/*统计不及格人数*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"score=%f\n"</span>,s);     <span class="comment">/*打印总分*/</span></span><br><span class="line">    ave=s/<span class="number">5</span>;                    <span class="comment">/*计算平均分*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"average=%f\n 不及格人数：%d\n\n"</span>,ave,c);<span class="comment">/*打印平均分，不及格人数*/</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*printf("name=%s,score=%f\n",(boy+i)-&gt;name,(boy+i)-&gt;score);*/</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"name=%s,score=%f\n"</span>,boy[i].name,boy[i].score);</span><br><span class="line">        <span class="comment">/*以上两种写法*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结构体嵌套"><a href="#结构体嵌套" class="headerlink" title="结构体嵌套"></a>结构体嵌套</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">person</span> <span class="title">info</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">s</span>[2]=&#123;</span><span class="number">1</span>,<span class="string">"lily"</span>,<span class="string">'F'</span>,<span class="string">"yuri"</span>,<span class="string">'M'</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"id=%d\tinfo.name=%s\tinfo.sex=%c\n"</span>,s[i].id,s[i].info.name,s[i].info.sex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>初始化：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">studnet</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">person</span> <span class="title">man</span>;</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;stu;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu</span>=&#123;</span>&#123;<span class="number">18</span>,<span class="string">"bbb"</span>&#125;,<span class="number">21</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">stu</span>=&#123;</span><span class="number">18</span>,<span class="string">"bbb"</span>,<span class="number">21</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>索引成员变量：</p>
+<blockquote>
+<p>stu.man.age/stu.man.name</p>
+</blockquote>
+</li>
+<li>索引成员变量2：<blockquote>
+<p>（&amp;stu）-&gt;man.age/(&amp;stu)-&gt;man.name</p>
+</blockquote>
+</li>
+<li>索引成员变量3：<blockquote>
+<p>struct student <em>p=&stu;<br>p-&gt;man.age=18;      //等价于：（</em>p）.man.age=18;<br>strcpy(p-&gt;man.name,”aaa”);<br>p-&gt;score=100;</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="结构体变量赋值"><a href="#结构体变量赋值" class="headerlink" title="结构体变量赋值"></a>结构体变量赋值</h3><ul>
+<li>同类型结构体变量赋值,要求被赋值的结构体变量和原结构体变量，成员的类型、个数、顺序必须严格一致<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">s1</span>;</span>        </span><br><span class="line">    <span class="built_in">strcpy</span>(s1.name,<span class="string">"abc"</span>); <span class="comment">/*如果是普通变量，通过点运算符操作结构体成员*/</span></span><br><span class="line">    s1.age=<span class="number">18</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"s1.name=%s,s1.age=%d\n"</span>,s1.name,s1.age);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*相同类型的两个结构体变量可以相互赋值*/</span></span><br><span class="line">    <span class="comment">/*把s1成员变量的值拷贝给s2成员变量的内存*/</span></span><br><span class="line">    <span class="comment">/*s1和s2只是成员变量的值一样而已，他们是没有关系的两个变量*/</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">s2</span>=<span class="title">s1</span>;</span></span><br><span class="line">    <span class="comment">//memcpy(&amp;s2,&amp;s1,sizeof(s1));</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"s2.name=%s,s2.age=%d\n"</span>,s2.name,s2.age);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="结构体和指针"><a href="#结构体和指针" class="headerlink" title="结构体和指针"></a>结构体和指针</h3><ol>
+<li><p>指向普通结构体变量的指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> <span class="title">s1</span>=&#123;</span><span class="string">"lily"</span>,<span class="number">18</span>&#125;;</span><br><span class="line">    <span class="comment">/*如果是指针变量，通过-&gt;操作结构体成员*/</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> *<span class="title">p</span>=&amp;<span class="title">s1</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p-&gt;name=%s,p-&gt;age=%d\n"</span>,p-&gt;name,p-&gt;age);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"(*p).name=%s,(*p).age=%d\n"</span>,(*p).name,(*p).age);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>堆区结构体变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stido.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stu</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stu</span> *<span class="title">p</span>=<span class="title">NULL</span>;</span></span><br><span class="line">    p=(struct stu *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct stu));</span><br><span class="line">    <span class="comment">/*如果是指针变量，通过-&gt;操作结构体成员*/</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p-&gt;name,<span class="string">"stdt"</span>);</span><br><span class="line">    p-&gt;aeg=<span class="number">22</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p-&gt;name=%s\n,p-&gt;age=%d\n"</span>,p-&gt;name,p-&gt;age);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"(*p).name=%s\n,(*p).age=%d"</span>,(*p).name,(*p).age);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(p);<span class="comment">/*释放malloc空间防止变野置空*/</span></span><br><span class="line">    p=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>避免成员变量为void*类型的野指针状况。malloc提前申请内存，在进行数据存储</li>
+<li>结构体内存申请和释放<blockquote>
+<p>申请：先外层、后内层<br>释放：先内层、后外层</p>
+</blockquote>
+</li>
+</ul>
+<ol start="3">
+<li>结构体套一级指针</li>
+</ol>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-05-23T16:00:00.000Z" itemprop="datePublished">
+              2018-05-24
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
