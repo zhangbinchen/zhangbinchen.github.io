@@ -61,6 +61,108 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/06/05/经典案例/">经典案例</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-04T16:00:00.000Z" itemprop="datePublished">
+    2018-06-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="百钱百鸡"><a href="#百钱百鸡" class="headerlink" title="百钱百鸡"></a>百钱百鸡</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*百钱百鸡*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 若用100钱买一种鸡，公鸡最多只100/5=20只</span></span><br><span class="line"><span class="comment"> * 母鸡最多100/3=33</span></span><br><span class="line"><span class="comment"> * 小鸡100能买300只按题目要求最多100只</span></span><br><span class="line"><span class="comment"> *三种鸡共100只</span></span><br><span class="line"><span class="comment"> * 共用100钱买鸡</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cook,hen,chicken;</span><br><span class="line">    <span class="keyword">for</span>(cook=<span class="number">0</span>;cook&lt;=<span class="number">20</span>;cook++)   <span class="comment">/*控制公鸡数量*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)  <span class="comment">/*控制母鸡数量*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(chicken=<span class="number">0</span>;chicken&lt;=<span class="number">100</span>;chicken++) <span class="comment">/*控制小鸡数量*/</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((<span class="number">5</span>*cook+<span class="number">3</span>*hen+chicken/<span class="number">3.0</span>==<span class="number">100</span>)&amp;&amp;(cook+hen+chicken==<span class="number">100</span>))</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"cook=%2d,hen=%2d,chicken=%2d\n"</span>,cook,hen,chicken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <div class="more-link">
+            <a href="/2018/06/05/经典案例/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/06/03/Golang/">初识go语言</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-02T16:00:00.000Z" itemprop="datePublished">
+    2018-06-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/go语言/">go语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><p>Go是一种开源的程序设计语言，它意在使得人们能够方便的构建简单、可靠、搞笑的软件——golang.org<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  <span class="comment">/*每个go源代码开头都是package声明，代表该go代码所属的包*/</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span>  <span class="comment">/*导入包，fmt是包名*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;    <span class="comment">/*函数入口，此处语法花括号一定跟在这里写*/</span></span><br><span class="line">    fmt.Println(<span class="string">"Hello world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <div class="more-link">
+            <a href="/2018/06/03/Golang/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/05/27/文件操作/">文件操作</a>
         </h1>
       
@@ -575,63 +677,13 @@
 
     </li>
   
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/11/C语言基础/">初识c语言</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-10T16:00:00.000Z" itemprop="datePublished">
-    2018-05-11
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stido.h&gt;     /*引入头文件，&lt;&gt;系统库（标准C库）文件*/</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>         <span class="comment">/*int返回整型，main（）函数程序入口，必须有，且只能有一个void无参*/</span></span></span><br><span class="line"><span class="function"></span>&#123;                                <span class="comment">/*&#123;。。。&#125;函数体*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);     <span class="comment">/*将字符串hello world打印到屏幕，\n表示换行*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;                    <span class="comment">/*给main函数做返回，返回值是0。程序正常终止*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="include头文件包含的两种不同写法及其含义"><a href="#include头文件包含的两种不同写法及其含义" class="headerlink" title="include头文件包含的两种不同写法及其含义"></a>include头文件包含的两种不同写法及其含义</h3><p> #include&lt;&gt; 与 #include””</p>
-<ul>
-<li>&lt;&gt;表示系统直接按系统指定的目录检索</li>
-<li>“”表示系统先在””指定的路径（没写路径代表当前路径）查找头文件，如果找不到，再按系统指定的目录检索</li>
 </ul>
-        
-          <div class="more-link">
-            <a href="/2018/05/11/C语言基础/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
 
-    </li>
-  
-</ul>
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/categories/study/page/2/">2</a><a class="extend next" rel="next" href="/categories/study/page/2/">next »</a>
+    </nav>
+  </section>
 
 
             <footer>

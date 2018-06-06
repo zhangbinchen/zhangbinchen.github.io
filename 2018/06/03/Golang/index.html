@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>初识go语言 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>初识go语言</h1>
+    </header>
+
+    <section>
+      <h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><p>Go是一种开源的程序设计语言，它意在使得人们能够方便的构建简单、可靠、搞笑的软件——golang.org<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  <span class="comment">/*每个go源代码开头都是package声明，代表该go代码所属的包*/</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span>  <span class="comment">/*导入包，fmt是包名*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;    <span class="comment">/*函数入口，此处语法花括号一定跟在这里写*/</span></span><br><span class="line">    fmt.Println(<span class="string">"Hello world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>【注意】：</p>
+<ol>
+<li>main函数实现的就是入口功能。</li>
+<li>go语言中的函数前面必须加上func这个单词，而且函数名称后面必须跟一对小括号</li>
+<li>go语言中区分大小写。Print函数P大写<br>【注意2】：</li>
+<li>强制左花括号 { 的放置位置，如果把花括号{ 另起一行，go不允许，会报错</li>
+<li>每行代码占一行。</li>
+<li>Print、Println（换行）、Printf（%d、%s、%t、%T等格式化输出）</li>
+<li>%t匹配bool类型返回值true和false</li>
+<li>%T匹配其变量对应的数据类型</li>
+</ol>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量声明、赋值、初始化<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"变量定义"</span>)</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    1、声明格式：var 变量名 类型</span></span><br><span class="line"><span class="comment">    2、声明整形变量，该变量的默认值为0</span></span><br><span class="line"><span class="comment">    3、同一个&#123;&#125;里，声明的变量是唯一的</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">var</span> a <span class="keyword">int</span></span><br><span class="line">    fmt.Println(<span class="string">"a="</span>,a)</span><br><span class="line">    <span class="comment">/*可以同时声明多个变量，中间用逗号隔开*/</span></span><br><span class="line">    <span class="keyword">var</span> b,c <span class="keyword">int</span>  <span class="comment">/*定义b、c后对其赋值*/</span></span><br><span class="line">    b=<span class="number">10</span></span><br><span class="line">    c=<span class="number">10</span></span><br><span class="line">    <span class="keyword">var</span> d <span class="keyword">int</span>=<span class="number">10</span><span class="comment">/*定义变量的同时将10赋给d*/</span></span><br><span class="line">    fmt.Println(d)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="自动推导类型（更简单的变量赋值方式）"><a href="#自动推导类型（更简单的变量赋值方式）" class="headerlink" title="自动推导类型（更简单的变量赋值方式）"></a>自动推导类型（更简单的变量赋值方式）</h3><blockquote>
+<p>num：=30</p>
+</blockquote>
+<p>go中：自动退到类型就是不通过var声明变量，不指定类型直接在变量名后面跟：号，同时完成赋值，go会根据所赋的值自动推导出变量的类型</p>
+<h3 id="多重赋值、匿名变量"><a href="#多重赋值、匿名变量" class="headerlink" title="多重赋值、匿名变量"></a>多重赋值、匿名变量</h3><ol>
+<li>多重赋值：a,b,c:=1,2.5,”abcddf”</li>
+<li>匿名变量：<em>匿名变量，丢弃数据不进行处理，\</em>匿名变量配合函数返回值使用才有价值<br>语法：<em>, i,\</em>,j:=1,2,3,4</li>
+</ol>
+<h3 id="接收输入"><a href="#接收输入" class="headerlink" title="接收输入"></a>接收输入</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> age <span class="keyword">int</span></span><br><span class="line">    fmt.Scanf(<span class="string">"%d"</span>,&amp;age)     <span class="comment">/*S大写*/</span></span><br><span class="line">    fmt.Scan(&amp;age)</span><br><span class="line">    fmt.Printf(<span class="string">"a=%d"</span>,age)   <span class="comment">/*P大写*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h3><ol>
+<li>字母数字下划线组成</li>
+<li>不能以数字开头、区分大小写</li>
+<li>不能是系统关键字</li>
+</ol>
+<h5 id="go关键字"><a href="#go关键字" class="headerlink" title="go关键字"></a>go关键字</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">-</th>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">break</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">func</td>
+<td style="text-align:center">interface</td>
+<td style="text-align:center">select</td>
+</tr>
+<tr>
+<td style="text-align:left">case</td>
+<td style="text-align:center">defer</td>
+<td style="text-align:center">go</td>
+<td style="text-align:center">map</td>
+<td style="text-align:center">struct</td>
+</tr>
+<tr>
+<td style="text-align:left">chan</td>
+<td style="text-align:center">else</td>
+<td style="text-align:center">goto</td>
+<td style="text-align:center">package</td>
+<td style="text-align:center">switch</td>
+</tr>
+<tr>
+<td style="text-align:left">const</td>
+<td style="text-align:center">fallthrough</td>
+<td style="text-align:center">if</td>
+<td style="text-align:center">range</td>
+<td style="text-align:center">type</td>
+</tr>
+<tr>
+<td style="text-align:left">continue</td>
+<td style="text-align:center">for</td>
+<td style="text-align:center">import</td>
+<td style="text-align:center">return</td>
+<td style="text-align:center">var</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:center">零值</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bool</td>
+<td style="text-align:center">布尔类型</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">其值不为真即为假，不可以用数字代表true或false</td>
+</tr>
+<tr>
+<td style="text-align:left">byte</td>
+<td style="text-align:center">字节型</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">uint8</td>
+</tr>
+<tr>
+<td style="text-align:left">rune</td>
+<td style="text-align:center">字符类型</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">专用于存储unicode编码，等价于uint32</td>
+</tr>
+<tr>
+<td style="text-align:left">int，uint</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">4或8</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">有符号32位或无符号64位</td>
+</tr>
+<tr>
+<td style="text-align:left">int8</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-128~127</td>
+</tr>
+<tr>
+<td style="text-align:left">uint8</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0~255</td>
+</tr>
+<tr>
+<td style="text-align:left">int16</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-32768~32767</td>
+</tr>
+<tr>
+<td style="text-align:left">uint16</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0~65535</td>
+</tr>
+<tr>
+<td style="text-align:left">int32</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-2147483648到2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">uint32</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0到4294967295（42亿）</td>
+</tr>
+<tr>
+<td style="text-align:left">int64</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0到18446744073709551615（1844京）</td>
+</tr>
+<tr>
+<td style="text-align:left">uint64</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-9223372036854775808到9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:left">float32</td>
+<td style="text-align:center">浮点型</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">小数位精确到7位</td>
+</tr>
+<tr>
+<td style="text-align:left">float64</td>
+<td style="text-align:center">浮点型</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">小数位精确到15位</td>
+</tr>
+<tr>
+<td style="text-align:left">complex64</td>
+<td style="text-align:center">复数类型</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">complex128</td>
+<td style="text-align:center">复数类型</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">64位实数和虚数</td>
+</tr>
+<tr>
+<td style="text-align:left">uintptr</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">4或8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">足以存储指针的uint32或uint64整数</td>
+</tr>
+<tr>
+<td style="text-align:left">string</td>
+<td style="text-align:center">字符串</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">utf-8字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><p>布尔类型的变量取值：true（真）、false（假）<br>【输出匹配符%t】</p>
+<h3 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h3><p>float64存储小数比float32更准确</p>
+<h3 id="字符与字符串的区别"><a href="#字符与字符串的区别" class="headerlink" title="字符与字符串的区别"></a>字符与字符串的区别</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ch <span class="keyword">byte</span>      <span class="comment">/*字符*/</span></span><br><span class="line">    <span class="keyword">var</span> str <span class="keyword">string</span>   <span class="comment">/*字符串*/</span></span><br><span class="line">    ch=<span class="string">'a'</span>           <span class="comment">/*字符用单引号，往往都只有一个字符，转义字符除外‘\n’*/</span></span><br><span class="line">    fmt.Println(<span class="string">"ch="</span>,ch)</span><br><span class="line">    str=<span class="string">"a"</span>          <span class="comment">/*字符串用双引号，有一个或多个字符组成，字符串都是隐藏了一个结束符‘\0’*/</span></span><br><span class="line">    fmt.Println(<span class="string">"str="</span>,str)</span><br><span class="line">    str=<span class="string">"hello"</span>      <span class="comment">/*测试字符串由多少字符组成*/</span></span><br><span class="line">    fmt.Println(<span class="string">"str长度是"</span>,<span class="built_in">len</span>（str）)<span class="comment">/*len()函数测试字符串长度*/</span></span><br><span class="line">    fmt.Printf(<span class="string">"str[0]=%c,str[1]=%c\n"</span>,str[<span class="number">0</span>],str[<span class="number">1</span>])<span class="comment">/*取出字符串中的某个字符，从0开始操作*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="fmt包的格式化输出输入"><a href="#fmt包的格式化输出输入" class="headerlink" title="fmt包的格式化输出输入"></a>fmt包的格式化输出输入</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%%</td>
+<td>一个%</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td>一个二进制整数值（基数为2），或者是一个（高级的）用科学记数法表示的指数为2的浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%c</td>
+<td>字符型。可以把输入的数字按照ASCII码相应转换为对应的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td>一个十进制数值（基数为10）</td>
+</tr>
+<tr>
+<td style="text-align:left">%e</td>
+<td>以科学计数法e表示的浮点数或者复数值</td>
+</tr>
+<tr>
+<td style="text-align:left">%E</td>
+<td>以科学计数法e表示的浮点数或者复数值</td>
+</tr>
+<tr>
+<td style="text-align:left">%f</td>
+<td>以标准计数法表示的浮点数或者复数值</td>
+</tr>
+<tr>
+<td style="text-align:left">%g</td>
+<td>以%e或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出</td>
+</tr>
+<tr>
+<td style="text-align:left">%G</td>
+<td>以%E或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出</td>
+</tr>
+<tr>
+<td style="text-align:left">%o</td>
+<td>一个以八进制表示的数字（基数为8）</td>
+</tr>
+<tr>
+<td style="text-align:left">%p</td>
+<td>以十六进制表示的一个值的地址，前缀为0x，字母使用小写的a-f表示</td>
+</tr>
+<tr>
+<td style="text-align:left">%q</td>
+<td>使用go语法以及必须时使用转义，以双引号括起来的字符串或者字节切片[]byte,或者是以单引号括起来的数字</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td>字符串。输出字符串中的字符直至字符串中的空字符（字符串以‘\0’结尾，这个’\0’即空字符）</td>
+</tr>
+<tr>
+<td style="text-align:left">%t</td>
+<td>以true或者false输出的布尔值</td>
+</tr>
+<tr>
+<td style="text-align:left">%T</td>
+<td>使用go语法输出的值的数据类型</td>
+</tr>
+<tr>
+<td style="text-align:left">%U</td>
+<td>一个用Unicode表示法表示的整型码点，默认值为4个数字字符</td>
+</tr>
+<tr>
+<td style="text-align:left">%v</td>
+<td>使用默认格式输出的内置或者自定义类型的值，或者是使用其类型的String（）方式输出的自定义值，如果该方法存在的话</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td>以十六进制表示的整型值（基数为十六），数字a-f是用小写表示</td>
+</tr>
+<tr>
+<td style="text-align:left">%X</td>
+<td>以十六进制表示的整型值（基数为十六），数字A-F是用小写表示</td>
+</tr>
+</tbody>
+</table>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-02T16:00:00.000Z" itemprop="datePublished">
+              2018-06-03
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/go语言/">go语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

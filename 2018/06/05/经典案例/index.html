@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>经典案例 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>经典案例</h1>
+    </header>
+
+    <section>
+      <h3 id="百钱百鸡"><a href="#百钱百鸡" class="headerlink" title="百钱百鸡"></a>百钱百鸡</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*百钱百鸡*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 若用100钱买一种鸡，公鸡最多只100/5=20只</span></span><br><span class="line"><span class="comment"> * 母鸡最多100/3=33</span></span><br><span class="line"><span class="comment"> * 小鸡100能买300只按题目要求最多100只</span></span><br><span class="line"><span class="comment"> *三种鸡共100只</span></span><br><span class="line"><span class="comment"> * 共用100钱买鸡</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cook,hen,chicken;</span><br><span class="line">    <span class="keyword">for</span>(cook=<span class="number">0</span>;cook&lt;=<span class="number">20</span>;cook++)   <span class="comment">/*控制公鸡数量*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)  <span class="comment">/*控制母鸡数量*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(chicken=<span class="number">0</span>;chicken&lt;=<span class="number">100</span>;chicken++) <span class="comment">/*控制小鸡数量*/</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((<span class="number">5</span>*cook+<span class="number">3</span>*hen+chicken/<span class="number">3.0</span>==<span class="number">100</span>)&amp;&amp;(cook+hen+chicken==<span class="number">100</span>))</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"cook=%2d,hen=%2d,chicken=%2d\n"</span>,cook,hen,chicken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*百钱百鸡优化*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mian</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cook,hen,chicken;</span><br><span class="line">    <span class="keyword">for</span>(cook=<span class="number">0</span>;cook&lt;=<span class="number">20</span>;cook++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)  <span class="comment">/*当公鸡和母鸡的数量确定后，小鸡数量固定为100-cook-hen*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            chicken=<span class="number">100</span>-cook-hen;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">5</span>*cook+<span class="number">3</span>*hen+chicken/<span class="number">3.0</span>==<span class="number">100</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"cook=%2d,hen=%2d,chicken=%2d\n"</span>,cook,hen,chicken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="回文素数"><a href="#回文素数" class="headerlink" title="回文素数"></a>回文素数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*先采用穷举法对1000以内所有整数进遍历，判断是否为素数*/</span></span><br><span class="line"><span class="comment">/*判断一个数是否为素数：整数能否被1和它自身之外的其他整数所整除，如果都不能整除，则为素数*/</span></span><br><span class="line"><span class="comment">/*如果此数为素数，则继续判断此数是两位数还是三位数*/</span></span><br><span class="line"><span class="comment">/*如果为两位数，则判断其十位和个位是否相同，若果相同则说明此数为回文素数*/</span></span><br><span class="line"><span class="comment">/*如果是三位数，则判断其百位和个位是否相同，如果相同，则说明此数是回文素数*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag;<span class="comment">/*用来记录是否为素数，1代表是，0代表不是*/</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(n=<span class="number">10</span>;n&lt;<span class="number">1000</span>;n++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            flag=<span class="number">1</span>;        <span class="comment">/*flag 默认为1*/</span></span><br><span class="line">            <span class="keyword">if</span>(n%i==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="number">0</span>;     <span class="comment">/*如果不符合素数要求，则把flag置0*/</span></span><br><span class="line">                <span class="keyword">break</span>;      <span class="comment">/*并跳出循环*/</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)         <span class="comment">/*判断是否为素数*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n/<span class="number">100</span>==<span class="number">0</span>)    <span class="comment">/*判断是否为两位数*/</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(n/<span class="number">10</span>==n%<span class="number">10</span>) <span class="comment">/*判断十位和个位是否相同*/</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"%4d"</span>,n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(n/<span class="number">100</span>==n%<span class="number">10</span>) <span class="comment">/*判断百位和个位是否相同*/</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">"%4d"</span>,n);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最值（MAX、MIN）"><a href="#最值（MAX、MIN）" class="headerlink" title="最值（MAX、MIN）"></a>最值（MAX、MIN）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">50</span>];                    <span class="comment">/*定义数组，存放元素*/</span></span><br><span class="line">    <span class="keyword">int</span> MAX,MIN;                  <span class="comment">/*定义最大值最小值变量*/</span></span><br><span class="line">    <span class="keyword">int</span> i,n;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input the size of array:\n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);               <span class="comment">/*输入数组的元素个数*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input the elements of the array one bye one:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)              <span class="comment">/*依次输入数组的元素*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    MIN=a[<span class="number">0</span>];                     <span class="comment">/*数组首元素默认为最小值*/</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)              <span class="comment">/*找出数组元素中的最小值*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;MIN)              <span class="comment">/*如果有比MIN小的元素*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            MIN=a[i];             <span class="comment">/*就把此元素赋值给MIN*/</span></span><br><span class="line">            j=i+<span class="number">1</span>;                <span class="comment">/*将存储最小值的位置赋值给j*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    MAX=a[<span class="number">0</span>];                     <span class="comment">/*数组首元素默认为最大值*/</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)              <span class="comment">/*找出数组中最大的元素*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;MAX)              <span class="comment">/*如果有比max大的元素*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            MAX=a[i];             <span class="comment">/*就把此元素赋值给max*/</span></span><br><span class="line">            k=i+<span class="number">1</span>;                <span class="comment">/*将存储最大值的位置赋值给k*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"The position of the MIN is:%d\n"</span>,j);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"The MIN is:%d\n"</span>,MIN);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"The position of the MAX is:%d\n"</span>,k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"The MAX is:%d\n"</span>,MAX);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-04T16:00:00.000Z" itemprop="datePublished">
+              2018-06-05
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

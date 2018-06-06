@@ -61,6 +61,57 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/06/05/经典案例/">经典案例</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-04T16:00:00.000Z" itemprop="datePublished">
+    2018-06-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="百钱百鸡"><a href="#百钱百鸡" class="headerlink" title="百钱百鸡"></a>百钱百鸡</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*百钱百鸡*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 若用100钱买一种鸡，公鸡最多只100/5=20只</span></span><br><span class="line"><span class="comment"> * 母鸡最多100/3=33</span></span><br><span class="line"><span class="comment"> * 小鸡100能买300只按题目要求最多100只</span></span><br><span class="line"><span class="comment"> *三种鸡共100只</span></span><br><span class="line"><span class="comment"> * 共用100钱买鸡</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cook,hen,chicken;</span><br><span class="line">    <span class="keyword">for</span>(cook=<span class="number">0</span>;cook&lt;=<span class="number">20</span>;cook++)   <span class="comment">/*控制公鸡数量*/</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)  <span class="comment">/*控制母鸡数量*/</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(chicken=<span class="number">0</span>;chicken&lt;=<span class="number">100</span>;chicken++) <span class="comment">/*控制小鸡数量*/</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((<span class="number">5</span>*cook+<span class="number">3</span>*hen+chicken/<span class="number">3.0</span>==<span class="number">100</span>)&amp;&amp;(cook+hen+chicken==<span class="number">100</span>))</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"cook=%2d,hen=%2d,chicken=%2d\n"</span>,cook,hen,chicken);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <div class="more-link">
+            <a href="/2018/06/05/经典案例/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/05/27/文件操作/">文件操作</a>
         </h1>
       
