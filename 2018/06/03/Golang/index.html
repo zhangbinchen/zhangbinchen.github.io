@@ -359,6 +359,284 @@
 </tr>
 </tbody>
 </table>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>【const a int =10】<br>变量声明 var<br>常量声明 const<br>命名规则同变量</p>
+<ul>
+<li>字面常量：（literal）是指程序中硬编码的常量如：</li>
+<li>123</li>
+<li>3.1415    /*浮点型常量*/</li>
+<li>3.2+12i   /*复数类型常量*/</li>
+<li>true     /*布尔类型常量*/</li>
+<li>“foo”    /*字符串常量*/</li>
+</ul>
+<h6 id="iota枚举"><a href="#iota枚举" class="headerlink" title="iota枚举"></a>iota枚举</h6><ul>
+<li>常量声明可以使用iota常量生成器初始化。它用于生成一组以相似规则初始化的常量，但是不用每行都写一遍初始化表达式。</li>
+<li>【注意】：在一个const声明语句中，在第一个声明的常量所在的行，iota将会被置为0，然后在每一个有常量声明的行加一<br>eg：<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span>(</span><br><span class="line">        a=<span class="literal">iota</span>  <span class="comment">/*0*/</span></span><br><span class="line">        b=<span class="literal">iota</span>  <span class="comment">/*1*/</span></span><br><span class="line">        c=<span class="literal">iota</span>  <span class="comment">/*2*/</span></span><br><span class="line">    )</span><br><span class="line">    fmt.Printf(<span class="string">"a=%d,b=%d,c=%d\n"</span>,a,b,c)</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">const</span> d=<span class="literal">iota</span>   <span class="comment">/*iota遇到const重置为0*/</span></span><br><span class="line">    Println(d)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span>(            <span class="comment">/*iota可以只写一个*/</span></span><br><span class="line">        a1=<span class="literal">iota</span> <span class="comment">/*0*/</span>   </span><br><span class="line">        b1      <span class="comment">/*1*/</span> </span><br><span class="line">        c1      <span class="comment">/*2*/</span></span><br><span class="line">    )</span><br><span class="line">    fmt.Printf(<span class="string">"a1=%d,b1=%d,c1=%d\n"</span>,a1,b1,c1)</span><br><span class="line"></span><br><span class="line">    cost(</span><br><span class="line">        j=<span class="literal">iota</span></span><br><span class="line">        j1,j2,j3=<span class="literal">iota</span>,<span class="literal">iota</span>,<span class="literal">iota</span><span class="comment">/*同一行值相同*/</span></span><br><span class="line">        k=<span class="literal">iota</span></span><br><span class="line">    fmt.Println(j,j1,j2,j3,k)</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>算术运算符、 赋值运算符、关系运算符、逻辑运算符</p>
+<ol>
+<li>算术运算符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">术语</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+<td style="text-align:center">10+5</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+<td style="text-align:center">10-5</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘</td>
+<td style="text-align:center">10*5</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:center">除</td>
+<td style="text-align:center">10/5</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">取模</td>
+<td style="text-align:center">10%3</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">++</td>
+<td style="text-align:center">后自增（go中没有前自增）</td>
+<td style="text-align:center">a=0;a++</td>
+<td style="text-align:center">a=1（a++等价a=a+1）</td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">后自减（go中没有前自减）</td>
+<td style="text-align:center">a=4;a–</td>
+<td style="text-align:center">a=3（a–等价a=a-1）</td>
+</tr>
+</tbody>
+</table>
+<p>【go语言中没有前缀自增自减】</p>
+<ul>
+<li><p>go语言中不允许隐式转换，所有类型转换必须显式声明（强制转换），而且转换只能发生在两种相互兼容的类型之间</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ch <span class="keyword">byte</span>=<span class="number">97</span></span><br><span class="line"><span class="keyword">var</span> a <span class="keyword">int</span>=<span class="keyword">int</span>(ch)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制类型转换写法：数据类型名（待转换的值）</p>
+</li>
+<li>【注意】：</li>
+<li>int强转float 多小数</li>
+<li>float强转int丢精度<br>【补充】：”+”除了加法运算外还能连接两个字符串：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 <span class="keyword">string</span> =<span class="string">"abc"</span></span><br><span class="line"><span class="keyword">var</span> str2 <span class="keyword">string</span> =<span class="string">"deff"</span></span><br><span class="line">fmt.Printf(<span class="string">"%s"</span>,str1+str2)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>赋值运算符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">普通赋值</td>
+<td style="text-align:center">c=a+b将表达式结果赋值给c</td>
+</tr>
+<tr>
+<td style="text-align:center">+=</td>
+<td style="text-align:center">相加后再赋值</td>
+<td style="text-align:center">c+=a等价  c=c-a</td>
+</tr>
+<tr>
+<td style="text-align:center">-=</td>
+<td style="text-align:center">相减后再赋值</td>
+<td style="text-align:center">c-=a等价于 c=c-a</td>
+</tr>
+<tr>
+<td style="text-align:center">*=</td>
+<td style="text-align:center">相乘后再赋值</td>
+<td style="text-align:center">c<em>=a等价于 c=c</em>a</td>
+</tr>
+<tr>
+<td style="text-align:center">/=</td>
+<td style="text-align:center">相除后再赋值</td>
+<td style="text-align:center">c/=a等价于 c=c/a</td>
+</tr>
+<tr>
+<td style="text-align:center">%=</td>
+<td style="text-align:center">求余后再赋值</td>
+<td style="text-align:center">c%=a等价于 c=c%a</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>关系运算符（比较运算符）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">术语</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">==</td>
+<td style="text-align:center">相等于</td>
+<td style="text-align:center">4==3</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">！=</td>
+<td style="text-align:center">不等于</td>
+<td style="text-align:center">4！=3</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+<td style="text-align:center">4&lt;3</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+<td style="text-align:center">4&gt;3</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小于等于</td>
+<td style="text-align:center">4&lt;=3</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大于等于</td>
+<td style="text-align:center">4&gt;=1</td>
+<td style="text-align:center">true</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>逻辑运算符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">术语</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">!</td>
+<td style="text-align:center">非</td>
+<td style="text-align:center">！a</td>
+<td style="text-align:center">如果a为假，则！a为真；如果a为真，则！a为假</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;&amp;</td>
+<td style="text-align:center">与</td>
+<td style="text-align:center">a&amp;&amp;b</td>
+<td style="text-align:center">如果a和b都为真，则结果为真，否则为假。</td>
+</tr>
+<tr>
+<td style="text-align:center">&#124;&#124;</td>
+<td style="text-align:center">或</td>
+<td style="text-align:center">a&#124;&#124;b</td>
+<td style="text-align:center">如果a和b有一个为真，则结果为真，二者都为假时，结果为假</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>其他运算符<br>|运算符|术语|示例|说明|<br>|&amp;|取地址运算符|&amp;a|变量a的地址<br>|*|取值运算符|*a|指针变量a所指向的内存的值</li>
+</ol>
+<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">优先级</th>
+<th style="text-align:center">运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">^ ! .</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">* / % &lt;&lt; &gt;&gt; &amp; &amp;^</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">+ -</td>
+<td>^</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">== != &lt; &lt;= &gt;= &gt;</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">&lt;</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&amp;&amp;</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&#124;&#124;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><ol>
+<li>选择结构</li>
+</ol>
+<ul>
+<li><p>if（多用于多条件判断，区间性数据判断）<br>if 条件判断{<br>  代码语句<br>}<br>条件判断如果为真(true)，那么执行大括号中的语句，如果为假(false)，就不执行大括号中的语句</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age <span class="keyword">int</span>=<span class="number">26</span></span><br><span class="line"><span class="keyword">if</span> age&gt;<span class="number">18</span>&#123;      <span class="comment">/*此处条件判断没有小括号且花括号紧跟条件判断语句*/</span></span><br><span class="line">    fmt.Printf(<span class="string">"我长大了"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">if age:=26;a&gt;18&#123;        /go中if支持1个初始化语句，初始化语句和判断条件以分号分隔/</span></span><br><span class="line"><span class="comment">    fmt.Printf("hahahah")</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>if else</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var score float64</span></span><br><span class="line">fmt.Println(<span class="string">"请输入考试成绩"</span>)</span><br><span class="line">fmt.Scnaf(<span class="string">"%f"</span>,&amp;score)</span><br><span class="line"><span class="keyword">if</span> score&gt;=<span class="number">90</span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"奖励100元"</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"跪键盘"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>switch case（定值判断）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> year <span class="keyword">int</span> </span><br><span class="line">    <span class="keyword">var</span> month <span class="keyword">int</span></span><br><span class="line">    <span class="keyword">var</span> day <span class="keyword">int</span></span><br><span class="line">    fmt.Println(<span class="string">"请输入年份"</span>)</span><br><span class="line">    fmt.Scanf(<span class="string">"%d\n"</span>,&amp;year)</span><br><span class="line">    fmt.Println(<span class="string">"请输入月份"</span>)</span><br><span class="line">    fmt.Scanf(<span class="string">"%d"</span>,&amp;month)</span><br><span class="line">    <span class="keyword">if</span> month&gt;=<span class="number">1</span>&amp;&amp;month&lt;=<span class="number">12</span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> month&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span>            <span class="comment">/*case 穿透写法*/</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">            <span class="keyword">fallthrough</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">            day=<span class="number">31</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">if</span>(year%<span class="number">400</span>==<span class="number">0</span>)||(year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">                day=<span class="number">29</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                day=<span class="number">28</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            day=<span class="number">30</span></span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Printf(<span class="string">"%d年%d月共%d天"</span>,year,month,day)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        fmt.Println(<span class="string">"月份输入错误！！"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>循环结构（go中仅有for循环一种）</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i:=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++&#123;   <span class="comment">/*没有括号，且花括号紧跟第三个表达式*/</span></span><br><span class="line">    fmt.Println(<span class="string">"hello go go "</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>break（跳出本次循环）</li>
+<li>continue（立即结束本次循环，判断循环条件，如果成立，则进入下一次循环，否则退出循环）</li>
+<li>循环嵌套：<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main             <span class="comment">//            *</span></span><br><span class="line">                         <span class="comment">//           ***</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span>             <span class="comment">//          *****</span></span><br><span class="line">                         <span class="comment">//         *******</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;             <span class="comment">//        *********  </span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++&#123;    <span class="comment">//       *********** 打印此图</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;<span class="number">5</span>-i;j++&#123;</span><br><span class="line">            fmt.Print(<span class="string">" "</span>)  <span class="comment">/*打印空格*/</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> k:=<span class="number">0</span>;k&lt;<span class="number">2</span>*i+<span class="number">1</span>;k++&#123;</span><br><span class="line">            fmt.Print(<span class="string">"*"</span>)  <span class="comment">/*打印*号*/</span></span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
 
       
