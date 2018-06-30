@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内存、指针 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>内存、指针</h1>
+    </header>
+
+    <section>
+      <h3 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h3><ul>
+<li>数据类型：<blockquote>
+<p>为了更好的进行内存的管理，让编译器能确定分配多少内存<br>类型是对数据的抽象<br>类型相同的数据具有相同的表示形式、存储格式及相关操作<br>程序中的所有数据都必定属于某种数据类型<br>数据类型可以理解为创建变量的摸具：固定大小内存的别名</p>
+</blockquote>
+</li>
+<li>数据类型别名（typedef）</li>
+<li>typedef</li>
+</ul>
+<ol>
+<li>起别名-简化struct关键字</li>
+<li>区分数据类型</li>
+<li>提高代码移植性<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">64</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">&#125;myPerson;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">p</span> = &#123;</span><span class="string">"aaa"</span>,<span class="number">10</span>&#125;;</span><br><span class="line">    myPerson p2 = &#123;<span class="string">"bbb"</span>,<span class="number">20</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*区分数据类型*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">char</span> *PCHAR;</span><br><span class="line">    PCHAR p1, p2;</span><br><span class="line">    <span class="keyword">char</span> *p3, *P4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*提高移植性*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> MYINT;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MYINT a = <span class="number">10</span>;</span><br><span class="line">    MYINT b = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ul>
+<li>void 数据类型<blockquote>
+<p>不可以利用void创建变量（无法给无类型变量分配内存）<br>用途：限定函数返回值，函数参数<br>void* 万能指针 可以不通过强制类型转换就转成其他类型的指针</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> * p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span>* pInt = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">char</span> *pChar = <span class="literal">NULL</span>;</span><br><span class="line">    pChar = (<span class="keyword">char</span> *)pInt;</span><br><span class="line">    pChar = p;<span class="comment">/*万能指针可以不通过强制类型转换转换指针类型*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>sizeof 用法<blockquote>
+<p>本质:是一个操作符，不是函数<br>返回值类型 unsigned int<br>用途：统计数组长度</p>
+</blockquote>
+</li>
+<li>变量的修改方式：<blockquote>
+<p>直接修改<br>间接修改（指针）</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">    a=<span class="number">20</span>;           <span class="comment">/*直接修改*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *p=&amp;a;</span><br><span class="line">    *P=<span class="number">30</span>;          <span class="comment">/*间接修改*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> d;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">p</span> = &#123;</span> <span class="string">'a'</span>, <span class="number">10</span>, <span class="string">'b'</span>, <span class="number">11</span> &#125;;</span><br><span class="line">    <span class="comment">/*直接修改d属性*/</span></span><br><span class="line">    p.d = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">/*间接修改d属性*/</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> *<span class="title">P</span> = &amp;<span class="title">p</span>;</span></span><br><span class="line">    P-&gt;d = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,P);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,P+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">char</span> *pp = &amp;p;</span><br><span class="line">    *(<span class="keyword">int</span>*)(pp + <span class="number">12</span>) = <span class="number">2000</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"d属性为：%d\n"</span>,*(<span class="keyword">int</span>*)(pp+<span class="number">12</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"d属性为：%d\n"</span>, *(<span class="keyword">int</span>*)((<span class="keyword">int</span>*)pp + <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    test();</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="内存分区模型"><a href="#内存分区模型" class="headerlink" title="内存分区模型"></a>内存分区模型</h4><ol>
+<li>程序运行前</li>
+</ol>
+<ul>
+<li>代码区（共享、只读）</li>
+<li>数据区（存放数据：全局变量、静态变量、常量）<blockquote>
+<p>已初始化数据区：data<br>未初始化数据区：bss</p>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li>程序运行后</li>
+</ol>
+<ul>
+<li>栈stack（符合先进后出数据结构，编译器自动管理分配和释放，有限容量）<blockquote>
+<p>栈是一种先进后出的内存结构，由编译器自动分配释放，存放函数的参数值，返回值，局部变量等。在程序运行过程中实时加载和释放，因此局部变量的生存周期为申请到释放该段栈空间</p>
+</blockquote>
+</li>
+</ul>
+<p>【注意】：不要返回局部变量的地址，局部变量在函数执行后就被释放了，释放的内存没有权限操作了，如果操作结果未知。</p>
+<ul>
+<li>堆heap（容量远远大于栈，不是无限。手动开辟malloc（），手动释放free（））<blockquote>
+<p>堆是一个大容器，它的容量要远远大于栈，但没有栈那样先进后出的顺序。用于动态内存分配，堆在内存中位于bss区和栈区之间。一般由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收。</p>
+</blockquote>
+</li>
+</ul>
+<p>【注意】：主调函数没有分配内存，被调函数需要用更高级的指针去修饰低级指针，进行内存分配<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> * <span class="title">getSpace</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)* <span class="number">5</span>);  <span class="comment">/*手动开辟*/</span></span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = i + <span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p = getSpace();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);      <span class="comment">/*手动释放*/</span></span><br><span class="line">    p = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    test();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="static和extern区别"><a href="#static和extern区别" class="headerlink" title="static和extern区别"></a>static和extern区别</h4><ul>
+<li>static修饰的静态变量：</li>
+</ul>
+<ol>
+<li>在运行前分配内存，程序运行结束，生命周期结束</li>
+<li>在本文件内都可以使用</li>
+</ol>
+<ul>
+<li>extern：可以提高变量的作用域<br>【-_-】:在c语言中全局变量前都有隐藏了的extern修饰符</li>
+</ul>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>const修饰的变量（常量）</li>
+</ul>
+<ol>
+<li>const修饰的全局变量：放在常量区，不能修改（直接修改失败，间接修改，语法通过，运行失败）<br>【原因】：受到常量区的保护-_-</li>
+<li>const修饰的局部变量：放在栈区，可间接修改。（直接修改失败）并非真正的常量，伪常量，不可以用作数组的初始化</li>
+<li>字符串常量：<blockquote>
+<p>vs 下将多个相同的字符串常量看成一个<br>不可以修改字符串常量<br>ANSI并没有制定出字符串是否可以修改的标准，根据编译器不同，可能最终的结果也是不同的<br>【-_-】字符串常量地址是否相同</p>
+<ul>
+<li>tc2.0，同文件字符串常量地址不同</li>
+<li>vs2013，字符串常量地址同文件不同文件都相同</li>
+<li>Dev c++、QT同文件相同，不同文件不同。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>【-_-】:</p>
+<ul>
+<li>数据区包括：堆、栈，全局/静态存储区</li>
+<li>全局/静态存储区包括：常量区，全局区，静态区</li>
+<li>常量区包括：字符串常量区，常变量区</li>
+<li>代码区：存放程序编译后的二进制代码，不可寻地址区</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-29T16:00:00.000Z" itemprop="datePublished">
+              2018-06-30
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

@@ -61,6 +61,70 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/06/30/C进阶/">内存、指针</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-29T16:00:00.000Z" itemprop="datePublished">
+    2018-06-30
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h3><ul>
+<li>数据类型：<blockquote>
+<p>为了更好的进行内存的管理，让编译器能确定分配多少内存<br>类型是对数据的抽象<br>类型相同的数据具有相同的表示形式、存储格式及相关操作<br>程序中的所有数据都必定属于某种数据类型<br>数据类型可以理解为创建变量的摸具：固定大小内存的别名</p>
+</blockquote>
+</li>
+<li>数据类型别名（typedef）</li>
+<li>typedef</li>
+</ul>
+<ol>
+<li>起别名-简化struct关键字</li>
+<li>区分数据类型</li>
+<li>提高代码移植性<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">64</span>];</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">&#125;myPerson;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">p</span> = &#123;</span><span class="string">"aaa"</span>,<span class="number">10</span>&#125;;</span><br><span class="line">    myPerson p2 = &#123;<span class="string">"bbb"</span>,<span class="number">20</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*区分数据类型*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">char</span> *PCHAR;</span><br><span class="line">    PCHAR p1, p2;</span><br><span class="line">    <span class="keyword">char</span> *p3, *P4;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*提高移植性*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> MYINT;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MYINT a = <span class="number">10</span>;</span><br><span class="line">    MYINT b = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <div class="more-link">
+            <a href="/2018/06/30/C进阶/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/06/05/经典案例/">经典案例</a>
         </h1>
       
@@ -626,63 +690,13 @@
 
     </li>
   
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/11/C语言基础/">初识c语言</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-10T16:00:00.000Z" itemprop="datePublished">
-    2018-05-11
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stido.h&gt;     /*引入头文件，&lt;&gt;系统库（标准C库）文件*/</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>         <span class="comment">/*int返回整型，main（）函数程序入口，必须有，且只能有一个void无参*/</span></span></span><br><span class="line"><span class="function"></span>&#123;                                <span class="comment">/*&#123;。。。&#125;函数体*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);     <span class="comment">/*将字符串hello world打印到屏幕，\n表示换行*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;                    <span class="comment">/*给main函数做返回，返回值是0。程序正常终止*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="include头文件包含的两种不同写法及其含义"><a href="#include头文件包含的两种不同写法及其含义" class="headerlink" title="include头文件包含的两种不同写法及其含义"></a>include头文件包含的两种不同写法及其含义</h3><p> #include&lt;&gt; 与 #include””</p>
-<ul>
-<li>&lt;&gt;表示系统直接按系统指定的目录检索</li>
-<li>“”表示系统先在””指定的路径（没写路径代表当前路径）查找头文件，如果找不到，再按系统指定的目录检索</li>
 </ul>
-        
-          <div class="more-link">
-            <a href="/2018/05/11/C语言基础/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
 
-    </li>
-  
-</ul>
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/tags/C语言/page/2/">2</a><a class="extend next" rel="next" href="/tags/C语言/page/2/">next »</a>
+    </nav>
+  </section>
 
 
 
