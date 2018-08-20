@@ -57,6 +57,448 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/06/03/Golang/">初识go语言</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-02T16:00:00.000Z" itemprop="datePublished">
+    2018-06-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/go语言/">go语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><p>Go是一种开源的程序设计语言，它意在使得人们能够方便的构建简单、可靠、搞笑的软件——golang.org<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  <span class="comment">/*每个go源代码开头都是package声明，代表该go代码所属的包*/</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span>  <span class="comment">/*导入包，fmt是包名*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;    <span class="comment">/*函数入口，此处语法花括号一定跟在这里写*/</span></span><br><span class="line">    fmt.Println(<span class="string">"Hello world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <div class="more-link">
+            <a href="/2018/06/03/Golang/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/27/文件操作/">文件操作</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-26T16:00:00.000Z" itemprop="datePublished">
+    2018-05-27
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="磁盘文件和设备文件"><a href="#磁盘文件和设备文件" class="headerlink" title="磁盘文件和设备文件"></a>磁盘文件和设备文件</h3><ul>
+<li>磁盘文件<br>指一组相关数据的有序集合，通常存储在外部介质（如磁盘）上，使用时才调入内存</li>
+<li>设备文件<br>在操作系统中把每一个与主机相连的输入、输出设备看作一个文件，把他们的输入输出等同于对磁盘文件的读和写<blockquote>
+<p>磁盘文件的分类<br>计算机的存储在物理上是二进制的，所以物理上所有的磁盘文件本质上都是一样的：以字节为单位进行顺序存储</p>
+</blockquote>
+</li>
+<li>从用户或者操作系统的使用角度（逻辑上）把文件分为：</li>
+</ul>
+<ol>
+<li>文本文件：基于字符编码的文件</li>
+</ol>
+<ul>
+<li>基于字符编码，常见编码有ASCII、UNICODE等</li>
+<li>一般可以使用文本编辑器直接打开</li>
+<li>数5678的以ASCII存储形式（ASCII）为：00110101 00110110 00110111 00111000</li>
+</ul>
+<ol start="2">
+<li>二进制文件：基于值编码的文件</li>
+</ol>
+<ul>
+<li>基于值编码，自己根据具体应用，指定某个值是什么意思</li>
+<li>把内存中的数据按其在内存中的存储形式原样输出到磁盘上</li>
+<li>数5678的存储形式（二进制码）为：00010110 00101110
+        
+          <div class="more-link">
+            <a href="/2018/05/27/文件操作/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/24/结构体/">结构体</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-23T16:00:00.000Z" itemprop="datePublished">
+    2018-05-24
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="结构体定义"><a href="#结构体定义" class="headerlink" title="结构体定义"></a>结构体定义</h3><ul>
+<li><p>结构体定义语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;            <span class="comment">/*成员变量*/</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];      <span class="comment">/*不允许赋初值*/</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;;           <span class="comment">/*仅仅是一个数据类型*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构体变量定义及初始化</p>
+</li>
+</ul>
+<ol>
+<li>定义结构体变量的方式：</li>
+</ol>
+<ul>
+<li>先声明结构体类型在定义变量名</li>
+<li>在声明类型的同时定义变量</li>
+<li>直接定义结构体类型变量（无类型名）</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2018/05/24/结构体/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/23/内存管理/">内存管理</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-22T16:00:00.000Z" itemprop="datePublished">
+    2018-05-23
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>c语言变量的作用域分为：</p>
+<blockquote>
+<p>代码块作用域<br>函数作用域<br>文件作用域</p>
+</blockquote>
+<p>一. 局部变量</p>
+<blockquote>
+<p>定义在函数内部的变量（auto关键字用来修饰局部变量通常可以省略）<br>如果没有赋初值，内容为随机。</p>
+</blockquote>
+<p>二.静态（static）局部变量</p>
+<blockquote>
+<p>static局部变量的作用域也是在定义的函数内有效<br>static局部变量的生命周期和程序运行的周期一样，同时static局部变量的值只初始化一次，但可以赋值多次<br>static局部变量若未赋以初值，则由系统自动赋值：数值型变量自动赋初值0，字符型变量赋空字符<br>如果局部变量和static变量重名采用就近原则</p>
+</blockquote>
+        
+          <div class="more-link">
+            <a href="/2018/05/23/内存管理/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/18/指针/">指针</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-17T16:00:00.000Z" itemprop="datePublished">
+    2018-05-18
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><ul>
+<li>内存地址：内存区的每一个字节都有一个编号，这个编号就是内存地址</li>
+<li>指针就是内存地址（指针是内存单元的编号，指针变量是存放地址的变量）</li>
+</ul>
+<h3 id="指针变量的定义和使用"><a href="#指针变量的定义和使用" class="headerlink" title="指针变量的定义和使用"></a>指针变量的定义和使用</h3><ul>
+<li>指针也是一种数据类型，指针变量也是一种变量。</li>
+<li>指针变量指向谁，就把谁的地址赋值给指针变量</li>
+<li>“*”操作符操作的是指针变量指向的内存空间</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> b=<span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,%p\n"</span>,&amp;a,&amp;b); <span class="comment">/*打印a，b的地址*/</span></span><br><span class="line">             <span class="comment">/*定义了一个指针类型的变量，可以指向一个int类型变量的地址*/</span></span><br><span class="line">    <span class="keyword">int</span> *p; <span class="comment">/*int*代表的是一种数据类型，int*指针类型，p才是变量名*/</span>        </span><br><span class="line">    p=&amp;a;  <span class="comment">/*将a的地址赋值给变量p，p也是一个变量，值是一个内存地址编号*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,*p);<span class="comment">/*p指向了a的地址，*p就是a的值*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *p1=&amp;b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c\n"</span>,*p1);  <span class="comment">/*p1指向了b的地址，*p1就是b的值*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意：&amp;可以取得一个变量在内存中的地址，但是，不能取及寄存器变量，因为寄存器变量不再内存里，而在cpu里面，所以是没有地址的。
+        
+          <div class="more-link">
+            <a href="/2018/05/18/指针/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/17/函数/">函数</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-16T16:00:00.000Z" itemprop="datePublished">
+    2018-05-17
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <blockquote>
+<p>概念</p>
+</blockquote>
+<ul>
+<li>完成某一特定功能的代码段</li>
+<li>封装函数的目的，代码的复用、模块化项目文件结构</li>
+<li>程序就像公司，公司由部门组成，部门类似于函数</li>
+</ul>
+<h3 id="函数的分类"><a href="#函数的分类" class="headerlink" title="函数的分类"></a>函数的分类</h3><ul>
+<li>系统函数(库函数)：<blockquote>
+<p>printf、scanf、puts、gets、。。。。。。。。。。<br>掌握其函数功能、函数原型：函数名、函数返回值。<br>调用：引入对应头文件</p>
+</blockquote>
+</li>
+<li>用户自定义函数
+        
+          <div class="more-link">
+            <a href="/2018/05/17/函数/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/05/16/数组与字符串/">数组与字符串</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-05-15T16:00:00.000Z" itemprop="datePublished">
+    2018-05-16
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li>数组就是在内存中连续的相同类型的变量空间</li>
+<li>数组属于构造数据类型</li>
+<li><ul>
+<li>一个数组可以分解为多个数组元素；这些数组元素可以是基本数据类型货构造类型<blockquote>
+<p>int a【10】<br>struct Stu boy【10】</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>按数组元素类型的不同，数组可以分为：数值数组、字符数组、指针数组、结构数组等类别<blockquote>
+<p>int a【10】;<br>char s【10】;<br>char *p【10】;</p>
+</blockquote>
+</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2018/05/16/数组与字符串/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/05/15/程序流程结构/">程序流程结构</a>
         </h1>
       
@@ -236,60 +678,11 @@
 
     </li>
   
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/03/30/红与黑/">置万千生灵于一处，把坏的拣出，笼子里就不那么欢腾了。</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-03-30T02:52:52.000Z" itemprop="datePublished">
-    2018-03-30
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/红与黑/">红与黑</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/read/">read</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="初识于连"><a href="#初识于连" class="headerlink" title="初识于连"></a>初识于连</h2><p>小城中的人总有各种奇怪的性格，对于每一个人物，司汤达必是精心构想，也是各有所指。至于作家，不多赘述。</p>
-<p>于连，出生于几近刻薄的家庭环境，他的父亲和哥哥所表现的冷漠，更像是社会环境的无情。恰巧此种环境下让他有机会学得拉丁文。这也就让我们的主人公有了不同于他的父亲和哥哥的地方。他有思想、有抱负、甚至有一个大多数人不敢有的崇拜对象——拿破仑。批判的角度从此建立，也许这就是这个法国作家的哲学。</p>
-<p>不难看出小城中的阶级层次，突兀的对比足以反映出于连出生环境的恶劣。<br>也正是这些显而易见的东西能够让我对于连有更多的角度去认识、解读，我眼中的于连。</p>
-
-      
-    </div>
-</article>
-
-    </li>
-  
 </ul>
 
   <section id="nav-wrapper">
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">« prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">« prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">next »</a>
     </nav>
   </section>
 

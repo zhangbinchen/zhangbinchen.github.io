@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>指针 | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>指针</h1>
+    </header>
+
+    <section>
+      <ul>
+<li>指针变量</li>
+<li>指针是一种数据类型，占用内存空间，用来保存内存地址<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p1 = <span class="number">0x1234</span>;</span><br><span class="line">    <span class="keyword">int</span> ***p2 = <span class="number">0x1111</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1size:%d\n"</span>,<span class="keyword">sizeof</span>(p1));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p2size:%d\n"</span>,<span class="keyword">sizeof</span>(p2));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*指针是变量，指针本身也占内存空间，指针也可以被赋值*/</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    p1 = &amp;a;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1 address:%p\n"</span>,&amp;p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1 address:%p\n"</span>,p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a address:%p\n"</span>,&amp;a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="野指针和空指针"><a href="#野指针和空指针" class="headerlink" title="野指针和空指针"></a>野指针和空指针</h3><ul>
+<li>空指针：不能向NULL或者非法内存拷贝数据</li>
+<li>野指针：<blockquote>
+<ol>
+<li>指针变量未初始化：<br>任何指针变量刚被创建的时候不会自动成为NULL指针，他的缺省值是随机的，他会乱指一气，所以，指针变量在创建的同时应当被初始化，要么将指针设为NULL，要么指向合法内存</li>
+<li>指针释放后未置空:<br>有时指针在free或delete后未赋值NULL，便会使人们认为是合法的，不要被free和delete的名字迷惑，他们只是将指针所指的内存给释放掉，但并没有把指针本身干掉，此时指针指向的就是“垃圾”内存，释放后的指针应立即将指针置为NULL，防止产生野指针</li>
+<li>指针操作超越变量作用域<br>不要返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放<br>【规避野指针】<br>＞1. 初始化时置NULL<br>＞2. 释放时置NULL</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p>空指针可以重复释放、野指针不可以重复释放</p>
+<h3 id="指针的步长"><a href="#指针的步长" class="headerlink" title="指针的步长"></a>指针的步长</h3><ul>
+<li>+1后跳跃的字节数</li>
+<li>解引用解出的字节数</li>
+<li>自定义结构体步长<blockquote>
+<p>通过offsetof（结构体名称，属性）找到属性对应的偏移量<br>offsetof引入头文件：#include&lt;stddef.h&gt;</p>
+</blockquote>
+<h3 id="指针的件接赋值"><a href="#指针的件接赋值" class="headerlink" title="指针的件接赋值"></a>指针的件接赋值</h3></li>
+<li>三大条件<blockquote>
+<p>一个普通变量+指针变量（实参+形参）<br>建立关系<br>通过*操作内存</p>
+</blockquote>
+</li>
+<li>利用qt操作地址修改内存</li>
+</ul>
+<h3 id="指针做函数参数的输入输出特性"><a href="#指针做函数参数的输入输出特性" class="headerlink" title="指针做函数参数的输入输出特性"></a>指针做函数参数的输入输出特性</h3><ul>
+<li>输入特性：</li>
+</ul>
+<ol>
+<li>在主调函数中分配内存，被调函数使用</li>
+<li>分配在栈上和堆区</li>
+</ol>
+<ul>
+<li>输出特性：</li>
+</ul>
+<ol>
+<li>在被调函数中分配内存，主调函数使用</li>
+</ol>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3>
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-30T16:00:00.000Z" itemprop="datePublished">
+              2018-07-01
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

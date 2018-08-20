@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class='PageTitle'>
+        <h1>{ C++ }</h1>
+    </header>
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/12/类和对象/">类和对象</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-11T16:00:00.000Z" itemprop="datePublished">
+    2018-07-12
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C/">C++</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="C和C-中struct的区别"><a href="#C和C-中struct的区别" class="headerlink" title="C和C++中struct的区别"></a>C和C++中struct的区别</h3><ul>
+<li>c语言中struct只有变量</li>
+<li>c++中struct 既有变量，也有函数</li>
+</ul>
+<h3 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h3><ol>
+<li>属性和变量合成一个整体</li>
+<li>给属性和函数增加访问权限</li>
+</ol>
+<ul>
+<li>封装：<blockquote>
+<ol>
+<li>把变量（属性）和函数（操作）合成一个整体，封装在一个类中</li>
+<li>对变量和函数进行访问控制</li>
+</ol>
+</blockquote>
+</li>
+<li>访问权限<blockquote>
+<ol>
+<li>在类的内部（作用范围内），没有访问权限之分，所有成员可以互相访问</li>
+<li>在类的外部（作用范围外），访问权限才有意义：public，private,protected</li>
+<li>在类的外部，只有public修饰的成员才能被访问，在没有涉及继承与派生时<br>【private和protected是同等级的，外部不允许访问】<br>|访问属性|属性|对象内部|对象外部|<br>|:—-:|:—–:|:—-:|:—-:|<br>|public|公有|可访问|可访问|<br>|protected|保护|可访问|不可访问|<br>|private|私有|可访问|不可访问|</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Dose</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"兰帕德成就苏亚雷斯"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:         <span class="comment">/*公共外部可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mTall;</span><br><span class="line"><span class="keyword">protected</span>:      <span class="comment">/*保护外部不可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mMoney;</span><br><span class="line"><span class="keyword">private</span>:        <span class="comment">/*私有外部不可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">Person p;</span><br><span class="line">    p.mTall = <span class="number">11</span>;</span><br><span class="line">    <span class="comment">//p.mMoney 保护成员外部无法访问</span></span><br><span class="line">    <span class="comment">//p.mAge 私有成员外部无法访问</span></span><br><span class="line">    p.Dose();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h3><p>class默认访问权限为private，struct默认访问权限为public</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>             /*默认<span class="title">private</span>权限*/</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span>            /*默认<span class="title">public</span>权限*/</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    A a;</span><br><span class="line">    B b;</span><br><span class="line">    <span class="comment">/*a.mAge;   err无法访问私有成员 */</span></span><br><span class="line">    b.mAge;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    test();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将变量设为private"><a href="#将变量设为private" class="headerlink" title="将变量设为private"></a>将变量设为private</h3><ol>
+<li>可赋予客户端访问数据的一致性</li>
+<li>可细微划分访问控制<br>【尽量将成员属性设置为私有】</li>
+</ol>
+<ul>
+<li>好处：<blockquote>
+<p>自己可以控制读写权限<br>可以对设置内容加有效性验证</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/11/C++/">初识C++</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-10T16:00:00.000Z" itemprop="datePublished">
+    2018-07-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C/">C++</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="C-概述"><a href="#C-概述" class="headerlink" title="C++概述"></a>C++概述</h3><ul>
+<li>c++是对c的扩展，是c语言的超集。</li>
+<li>库：是编程模块的集合，可以在程序中调用他们。库对很多常见的编程问题提供了可靠的解决办法，因此可以节省程序员大量的时间和工作量。</li>
+<li>c++在c的基础上添加了面向对象编程和泛型编程的支持，并且继承了c语言的高效、简洁，快速和可移植的传统。</li>
+<li>c++融合了3种不同的编程方式：<blockquote>
+<p>-c语言代表的过程性语言<br>-c++在c语言基础上添加的类代表的面向对象的语言<br>-c++模板支持的泛型编程。<br>【ANSI在1998年定制了c++第一套标准】</p>
+</blockquote>
+<h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3>【面向过程思想核心】：功能分解，自顶向下，逐层细化（程序=数据结构+算法）<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3></li>
+<li>在面向对象中，算法与数据结构被看作一个整体，称作对象</li>
+<li>对象=算法+数据结构</li>
+<li>程序=对象+对象……<br>【面向对象三大特性】</li>
+</ul>
+<ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<h3 id="C-对C的扩展"><a href="#C-对C的扩展" class="headerlink" title="C++对C的扩展"></a>C++对C的扩展</h3><ol>
+<li>::作用域用算符<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>      <span class="comment">/*全局变量和局部变量重名用::作用于运算符区分*/</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">121</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"局部变量a:"</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"全局变量a:"</span> &lt;&lt; ::a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        system(<span class="string">"pause"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>作用域运算符可以用来解决局部变量与全局变量的重名问题，在局部变量作用域内，可以用::对<br>被屏蔽的同名全局变量进行访问（::前什么都不加表示全局作用域）</p>
+<ol start="2">
+<li>名字控制</li>
+</ol>
+<ul>
+<li>c++允许我们对名字的产生和名字的可见性进行控制</li>
+<li>c++中我们通过命名空间控制对名字的访问（namespace）<blockquote>
+<p>namespace</p>
+</blockquote>
+</li>
+<li>用途：解决名称冲突</li>
+<li>命名空间下可存放：变量、函数、结构体、类……</li>
+<li>命名空间必须要声明在全局作用域</li>
+<li>命名空间可以嵌套命名空间</li>
+<li>命名空间是开放的，可以随时将新成员添加到命名空间下</li>
+<li>命名空间可以匿名</li>
+<li>命名空间可以起别名</li>
+<li>命名空间的声明和实现可分离</li>
+</ul>
+<p>2.1. using声明</p>
+<ul>
+<li>using声明可使指定的标识符可用</li>
+<li>当using声明与就近原则同时出现，出错，尽量避免<br>2.2. using编译指令</li>
+<li>当using编译指令与就近原则同时出现，优先使用就近</li>
+<li>当using编译指令有多个，需要加作用域区分</li>
+<li>【注意】使用using声明或 using编译指令会增加命名冲突的可能性，也就是说，如果有命名空间，并在代码中使用作用域解析运算符，则不会出现二义性。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> KIngGlory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> LOL</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">2</span>;</span><br><span class="line"><span class="comment">/*  using KIngGlory::sunwukongId;</span></span><br><span class="line"><span class="comment">    err,当using声明与就近原则同时出现，出错，尽量避免</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sunwukongId &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//int sunwukongId = 2;/*当using编译指令与就近原则同时出现，优先使用就近原则*/</span></span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> KIngGlory;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> LOL;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; KIngGlory::sunwukongId &lt;&lt; <span class="built_in">endl</span>;<span class="comment">/*当using编译指令有多个，需要加作用域区分*/</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; LOL::sunwukongId &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//test01();</span></span><br><span class="line">    test02();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>c++增强部分</li>
+</ol>
+<ul>
+<li>全局变量检测增强 c++严格检测出重定义</li>
+<li>函数检测增强，返回值检测、形参类型检测、函数调用参数个数</li>
+<li>类型转换检测曾强；</li>
+<li>struct（结构体）增强 （c中不可以有函数必须有关键字struct）c++可以放函数、创建结构体变量，可以简化关键字struct</li>
+<li>bool类型扩展（bool类型占一个字节大小）（c语言下没有bool类型 c++有bool类型）true（1） false（0）</li>
+<li>三目运算符增强（a&lt;b?a:b）=100;c++下表示给三目运算结果赋值。</li>
+<li>c语言三目运算表达式返回值为数据值，为右值，不能赋值</li>
+<li>c++三目运算表达式返回值为变量本身（引用）为左值，可以赋值<br>【左值和右值的概念】<br>在c++中可以放在赋值操作符左边的是左值，可以放到操作赋值符右面的是右值。有些变量既可以当左值又可以当右值<br>左值为：Lvalue，L代表Location表示内存可以寻址，可以赋值<br>右值为：Rvalue，R代表Read，就是可以知道它的值<br>int temp=10；temp在内存中有地址，10没有，但是可以Read到它的值</li>
+<li>const增强<blockquote>
+<p>全局const受到常量区保护，运行修改失败（c、c++结论相同）<br>局部const,c++下const修饰的变量称为常量，可以用来初始化数组（c语言中const是伪常量，不可以初始化数组分配到栈上）</p>
+</blockquote>
+</li>
+<li>c语言中全局const会被存储到制度数据段，c++中全局const当声明extern或者对变量取址时，编译器会分配存储地址，变量存储在只读数据段，两个都受其到了保护不可修改</li>
+<li>c语言中局部const存储在堆栈区，只是不能通过变量直接修改const制度变量的值，但是可以跳过编译器的检查，通过指针间接修改该const值</li>
+<li>c中const默认为外部链接，c++中const默认为内部链接，当c语言两个文件中都有const int a的时候编译器会报重定义错误。而在c++中就不会，因为c++中的const默认是内部链接如果想让c++中的const具有外部链接属性，必须显示声明为:extern const int a=10;<br>【c语言】<blockquote>
+<p>全局const 直接修改失败，间接修改语法通过，运行失败<br>局部const 直接修改失败，间接修改成功</p>
+</blockquote>
+</li>
+</ul>
+<p>【c++】</p>
+<blockquote>
+<p>全局const 直接修改失败，间接修改语法通过，运行失败<br>局部const 直接修改失败，间接修改失败<br>c++中const修饰的可称作常量</p>
+</blockquote>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

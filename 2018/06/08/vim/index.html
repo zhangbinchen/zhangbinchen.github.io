@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vim | ZhangBinchen&#39;s Blog</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url(https://avatars3.githubusercontent.com/u/26861951?s=400&amp;u=097c794be5974849f47c6afd8cc1a191ee90eb20&amp;v=4)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>ZhangBinchen&#39;s Blog</div>
+        
+            <div>E-mail:17794224898@163.com</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>时间轴</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/zhangbinchen">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>vim</h1>
+    </header>
+
+    <section>
+      <h3 id="vim的三种模式"><a href="#vim的三种模式" class="headerlink" title="vim的三种模式"></a>vim的三种模式</h3><p>vim的三种模式：命令模式、文本编辑模式、末行模式<br>在末行模式可以直接执行shell命令（：！shell）</p>
+<ul>
+<li>命令模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">ZZ（大写）</td>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">代码格式化</td>
+</tr>
+<tr>
+<td style="text-align:left">gg=G</td>
+<td style="text-align:left">代码格式化</td>
+</tr>
+<tr>
+<td style="text-align:left">光标移动</td>
+</tr>
+<tr>
+<td style="text-align:left">h</td>
+<td style="text-align:left">光标左移</td>
+</tr>
+<tr>
+<td style="text-align:left">j</td>
+<td style="text-align:left">光标下移</td>
+</tr>
+<tr>
+<td style="text-align:left">k</td>
+<td style="text-align:left">光标上移</td>
+</tr>
+<tr>
+<td style="text-align:left">l</td>
+<td style="text-align:left">光标右移</td>
+</tr>
+<tr>
+<td style="text-align:left">w</td>
+<td style="text-align:left">光标移动一个单词</td>
+</tr>
+<tr>
+<td style="text-align:left">gg</td>
+<td style="text-align:left">光标移动到文件的开头</td>
+</tr>
+<tr>
+<td style="text-align:left">G</td>
+<td style="text-align:left">光标移动到文件的末尾</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">光标移动到行首</td>
+</tr>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">光标移动到行尾</td>
+</tr>
+<tr>
+<td style="text-align:left">nG</td>
+<td style="text-align:left">行跳转，如：12G-跳转到12行</td>
+</tr>
+<tr>
+<td style="text-align:left">删除</td>
+</tr>
+<tr>
+<td style="text-align:left">x（小写）</td>
+<td style="text-align:left">删除光标后一个字符相当于Del</td>
+</tr>
+<tr>
+<td style="text-align:left">X（大写）</td>
+<td style="text-align:left">删除光标前一个字符，相当于Baskspace</td>
+</tr>
+<tr>
+<td style="text-align:left">dw</td>
+<td style="text-align:left">删除光标开始的位置的字，包含光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">d0</td>
+<td style="text-align:left">删除光标前本行所有内容，不包含光标所在字符</td>
+</tr>
+<tr>
+<td style="text-align:left">D[d$]</td>
+<td style="text-align:left">删除光标后本行所有内容，包含光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">dd</td>
+<td style="text-align:left">删除光标所在的行（本质其实就是剪切）</td>
+</tr>
+<tr>
+<td style="text-align:left">ndd</td>
+<td style="text-align:left">从光标当前行向下删除指定的行数，如：15dd</td>
+</tr>
+<tr>
+<td style="text-align:left">v/ctrl+v</td>
+<td style="text-align:left">使用h、j、k、l、移动选择内容然后按d删除【ctrl+v是列模式，块选择】</td>
+</tr>
+<tr>
+<td style="text-align:left">撤销和反撤销</td>
+</tr>
+<tr>
+<td style="text-align:left">u</td>
+<td style="text-align:left">一步一步撤销，相当于ctrl+z</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+r</td>
+<td style="text-align:left">反撤销，相当于word中的ctrl+y</td>
+</tr>
+<tr>
+<td style="text-align:left">复制粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">yy</td>
+<td style="text-align:left">复制当前行</td>
+</tr>
+<tr>
+<td style="text-align:left">nyy</td>
+<td style="text-align:left">赋值n行，如：10yy</td>
+</tr>
+<tr>
+<td style="text-align:left">P（大写）</td>
+<td style="text-align:left">在光标所在位置向上新开辟一行，粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">p小写</td>
+<td style="text-align:left">在光标所在位置向下新开辟一行，粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">剪切</td>
+<td style="text-align:left">按dd或ndd删除，实际将其剪切到了剪切板中，p粘贴就行</td>
+</tr>
+<tr>
+<td style="text-align:left">v/ctrl+v</td>
+<td style="text-align:left">使用h、j、k、l、移动选择内容然后按d删除【ctrl+v是列模式，块选择】，y复制，P/p光标前/后粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">替换操作</td>
+</tr>
+<tr>
+<td style="text-align:left">r</td>
+<td style="text-align:left">替换当前字符</td>
+</tr>
+<tr>
+<td style="text-align:left">R</td>
+<td style="text-align:left">替换当前光标后的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">查找</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">/xxxx，光标位置开始搜索，按n向下，N向上</td>
+</tr>
+<tr>
+<td style="text-align:left">？</td>
+<td style="text-align:left">？xxxx，将光标移动到带搜索的字符串上，然后按n向上，N向下</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">将光标移动到带搜索的字符串上，然后按n向上搜索，N向下</td>
+</tr>
+<tr>
+<td style="text-align:left">shift+k</td>
+<td style="text-align:left">在带搜索的字符串上按shif+k，或者K（大写）可以查看相关的帮助文档</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>从命令模式进入编辑模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">在光标前插入</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:left">在光标后插入</td>
+</tr>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">在光标所在行的行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">在光标所在行的行尾插入</td>
+</tr>
+<tr>
+<td style="text-align:left">o（小写）</td>
+<td style="text-align:left">在光标所在的行的下面创建一行，行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">O（大写）</td>
+<td style="text-align:left">在光标所在行的上面创建一行，行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">s（小写）</td>
+<td style="text-align:left">删除光标后面的字符，从光标当前位置插入</td>
+</tr>
+<tr>
+<td style="text-align:left">S（大写）</td>
+<td style="text-align:left">删除光标所在当前行，从行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">块插入（列模式）</td>
+<td style="text-align:left">ctrl+v进入快选择，shift+i向前插入字符，按两下esc完成</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>末行模式（：）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">q</td>
+<td style="text-align:left">退出</td>
+</tr>
+<tr>
+<td style="text-align:left">q!</td>
+<td style="text-align:left">强制推出，不保存修改内容</td>
+</tr>
+<tr>
+<td style="text-align:left">w</td>
+<td style="text-align:left">保存修改不退出</td>
+</tr>
+<tr>
+<td style="text-align:left">wq</td>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">相当于wq</td>
+</tr>
+<tr>
+<td style="text-align:left">替换操作</td>
+</tr>
+<tr>
+<td style="text-align:left">：s/old/new/</td>
+<td style="text-align:left">光标所在行的第一个old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：s/old/new/g</td>
+<td style="text-align:left">光标所在行所有old全部替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：m，ns/old/new/g</td>
+<td style="text-align:left">将第m行至第n行之间的old全部替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：%s/old/new/g</td>
+<td style="text-align:left">当前文件的所有old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：1，$s/old/new/g</td>
+<td style="text-align:left">当前文件的所有old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：%s/old/new/gc</td>
+<td style="text-align:left">当前文件的所有old替换为new（每次替换需要用户确认）</td>
+</tr>
+<tr>
+<td style="text-align:left">快速翻屏</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+u</td>
+<td style="text-align:left">向下翻半屏（up）光标向上移动</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+d</td>
+<td style="text-align:left">向下翻半屏（down）光标向下移动</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+f</td>
+<td style="text-align:left">向上翻一屏（front）</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+b</td>
+<td style="text-align:left">向后翻一屏（back）</td>
+</tr>
+<tr>
+<td style="text-align:left">分屏操作</td>
+</tr>
+<tr>
+<td style="text-align:left">sp</td>
+<td style="text-align:left">当前文件水平分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">vsp</td>
+<td style="text-align:left">当前文件垂直分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">sp文件名</td>
+<td style="text-align:left">当前文件和另一个文件水平分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">vsp文件名</td>
+<td style="text-align:left">当前文件和另一个文件垂直分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl-w-w</td>
+<td style="text-align:left">在多个窗口切换光标</td>
+</tr>
+<tr>
+<td style="text-align:left">wall/wqall/xall/qall/qall!</td>
+<td style="text-align:left">保存/保存退出/保存退出/退出/强制退出分屏窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">在打开文件之前分屏（n可以省略水平/垂直）</td>
+<td style="text-align:left">vim -on/On file1 file2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>末行模式回到命令模式（按两下esc或者backspace或者回车）</li>
+</ul>
+<h3 id="vim的配置文件"><a href="#vim的配置文件" class="headerlink" title="vim的配置文件"></a>vim的配置文件</h3><ul>
+<li>用户级配置文件：~/.vimrc(修改只对当前用户作用，不会影响其他用户)</li>
+<li>系统级别配置文件：/etc/vim/vimrc（修改对所有用户作用）</li>
+<li>我的配置文件：<blockquote>
+</blockquote>
+“ vundle 环境设置<br>filetype off<br>set rtp+=~/.vim/bundle/Vundle.vim<br>“ vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间<br>call vundle#begin()<br>Plugin ‘VundleVim/Vundle.vim’<br>Plugin ‘altercation/vim-colors-solarized’<br>Plugin ‘tomasr/molokai’<br>Plugin ‘vim-scripts/phd’<br>Plugin ‘Lokaltog/vim-powerline’<br>Plugin ‘octol/vim-cpp-enhanced-highlight’<br>Plugin ‘nathanaelkane/vim-indent-guides’<br>Plugin ‘derekwyatt/vim-fswitch’<br>Plugin ‘kshenoy/vim-signature’<br>Plugin ‘vim-scripts/BOOKMARKS–Mark-and-Highlight-Full-Lines’<br>Plugin ‘majutsushi/tagbar’<br>Plugin ‘vim-scripts/indexer.tar.gz’<br>Plugin ‘vim-scripts/DfrankUtil’<br>Plugin ‘vim-scripts/vimprj’<br>Plugin ‘dyng/ctrlsf.vim’<br>Plugin ‘terryma/vim-multiple-cursors’<br>Plugin ‘scrooloose/nerdcommenter’<br>Plugin ‘vim-scripts/DrawIt’<br>Plugin ‘SirVer/ultisnips’<br>Plugin ‘Valloric/YouCompleteMe’<br>Plugin ‘derekwyatt/vim-protodef’<br>Plugin ‘scrooloose/nerdtree’<br>Plugin ‘fholgado/minibufexpl.vim’<br>Plugin ‘gcmt/wildfire.vim’<br>Plugin ‘sjl/gundo.vim’<br>Plugin ‘Lokaltog/vim-easymotion’<br>Plugin ‘suan/vim-instant-markdown’<br>Plugin ‘lilydjwg/fcitx.vim’<br>“ 插件列表结束<br>call vundle#end()<br>filetype plugin indent on<br>“ 配色方案<br>set background=dark<br>“colorscheme solarized<br>colorscheme molokai<br>“colorscheme phd<br>“ 禁止光标闪烁<br>set gcr=a:block-blinkon0<br>“ 禁止显示滚动条<br>set guioptions-=l<br>set guioptions-=L<br>set guioptions-=r<br>set guioptions-=R<br>“ 禁止显示菜单和工具条<br>set guioptions-=m<br>set guioptions-=T<br>“ 总是显示状态栏<br>set laststatus=2<br>“ 显示光标当前位置<br>set ruler<br>“ 开启行号显示<br>set number<br>“ 高亮显示当前行/列<br>set cursorline<br>set cursorcolumn<br>“ 高亮显示搜索结果<br>set hlsearch<br>“ 开启语法高亮功能<br>syntax enable<br>“ 允许用指定语法高亮配色方案替换默认方案<br>syntax on<br>“ 自适应不同语言的智能缩进<br>filetype indent on<br>“ 将制表符扩展为空格<br>set expandtab<br>“ 设置编辑时制表符占用空格数<br>set tabstop=4<br>“ 设置格式化时制表符占用空格数<br>set shiftwidth=4<br>“ 让 vim 把连续数量的空格视为一个制表符<br>set softtabstop=4<br>“ 随 vim 自启动<br>let g:indent_guides_enable_on_vim_startup=1<br>“ 从第二层开始可视化显示缩进<br>let g:indent_guides_start_level=2<br>“ 色块宽度<br>let g:indent_guides_guide_size=1<br>“字体<br>set guifont=YaHei\ Consolas\ Hybrid\ 14<br>“ 快捷键 i 开/关缩进可视化<br>:nmap <silent> <leader>i <plug>IndentGuidesToggle</plug></leader></silent></li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-07T16:00:00.000Z" itemprop="datePublished">
+              2018-06-08
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Linux/">Linux</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - ZhangBinchen </div>
+    <div>
+    ZhangBinchen's Blog
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

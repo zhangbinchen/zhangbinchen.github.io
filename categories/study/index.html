@@ -61,7 +61,423 @@
     <header class="title">
       
         <h1>
-          <a href="/2018/06/30/C进阶/">内存、指针</a>
+          <a href="/2018/07/12/类和对象/">类和对象</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-11T16:00:00.000Z" itemprop="datePublished">
+    2018-07-12
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C/">C++</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="C和C-中struct的区别"><a href="#C和C-中struct的区别" class="headerlink" title="C和C++中struct的区别"></a>C和C++中struct的区别</h3><ul>
+<li>c语言中struct只有变量</li>
+<li>c++中struct 既有变量，也有函数</li>
+</ul>
+<h3 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h3><ol>
+<li>属性和变量合成一个整体</li>
+<li>给属性和函数增加访问权限</li>
+</ol>
+<ul>
+<li>封装：<blockquote>
+<ol>
+<li>把变量（属性）和函数（操作）合成一个整体，封装在一个类中</li>
+<li>对变量和函数进行访问控制</li>
+</ol>
+</blockquote>
+</li>
+<li>访问权限<blockquote>
+<ol>
+<li>在类的内部（作用范围内），没有访问权限之分，所有成员可以互相访问</li>
+<li>在类的外部（作用范围外），访问权限才有意义：public，private,protected</li>
+<li>在类的外部，只有public修饰的成员才能被访问，在没有涉及继承与派生时<br>【private和protected是同等级的，外部不允许访问】<br>|访问属性|属性|对象内部|对象外部|<br>|:—-:|:—–:|:—-:|:—-:|<br>|public|公有|可访问|可访问|<br>|protected|保护|可访问|不可访问|<br>|private|私有|可访问|不可访问|</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Dose</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"兰帕德成就苏亚雷斯"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:         <span class="comment">/*公共外部可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mTall;</span><br><span class="line"><span class="keyword">protected</span>:      <span class="comment">/*保护外部不可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mMoney;</span><br><span class="line"><span class="keyword">private</span>:        <span class="comment">/*私有外部不可访问*/</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">Person p;</span><br><span class="line">    p.mTall = <span class="number">11</span>;</span><br><span class="line">    <span class="comment">//p.mMoney 保护成员外部无法访问</span></span><br><span class="line">    <span class="comment">//p.mAge 私有成员外部无法访问</span></span><br><span class="line">    p.Dose();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h3><p>class默认访问权限为private，struct默认访问权限为public</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>             /*默认<span class="title">private</span>权限*/</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span>            /*默认<span class="title">public</span>权限*/</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    A a;</span><br><span class="line">    B b;</span><br><span class="line">    <span class="comment">/*a.mAge;   err无法访问私有成员 */</span></span><br><span class="line">    b.mAge;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    test();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将变量设为private"><a href="#将变量设为private" class="headerlink" title="将变量设为private"></a>将变量设为private</h3><ol>
+<li>可赋予客户端访问数据的一致性</li>
+<li>可细微划分访问控制<br>【尽量将成员属性设置为私有】</li>
+</ol>
+<ul>
+<li>好处：<blockquote>
+<p>自己可以控制读写权限<br>可以对设置内容加有效性验证</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/11/C++/">初识C++</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-10T16:00:00.000Z" itemprop="datePublished">
+    2018-07-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C/">C++</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="C-概述"><a href="#C-概述" class="headerlink" title="C++概述"></a>C++概述</h3><ul>
+<li>c++是对c的扩展，是c语言的超集。</li>
+<li>库：是编程模块的集合，可以在程序中调用他们。库对很多常见的编程问题提供了可靠的解决办法，因此可以节省程序员大量的时间和工作量。</li>
+<li>c++在c的基础上添加了面向对象编程和泛型编程的支持，并且继承了c语言的高效、简洁，快速和可移植的传统。</li>
+<li>c++融合了3种不同的编程方式：<blockquote>
+<p>-c语言代表的过程性语言<br>-c++在c语言基础上添加的类代表的面向对象的语言<br>-c++模板支持的泛型编程。<br>【ANSI在1998年定制了c++第一套标准】</p>
+</blockquote>
+<h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3>【面向过程思想核心】：功能分解，自顶向下，逐层细化（程序=数据结构+算法）<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3></li>
+<li>在面向对象中，算法与数据结构被看作一个整体，称作对象</li>
+<li>对象=算法+数据结构</li>
+<li>程序=对象+对象……<br>【面向对象三大特性】</li>
+</ul>
+<ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<h3 id="C-对C的扩展"><a href="#C-对C的扩展" class="headerlink" title="C++对C的扩展"></a>C++对C的扩展</h3><ol>
+<li>::作用域用算符<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>      <span class="comment">/*全局变量和局部变量重名用::作用于运算符区分*/</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">121</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"局部变量a:"</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"全局变量a:"</span> &lt;&lt; ::a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        system(<span class="string">"pause"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>作用域运算符可以用来解决局部变量与全局变量的重名问题，在局部变量作用域内，可以用::对<br>被屏蔽的同名全局变量进行访问（::前什么都不加表示全局作用域）</p>
+<ol start="2">
+<li>名字控制</li>
+</ol>
+<ul>
+<li>c++允许我们对名字的产生和名字的可见性进行控制</li>
+<li>c++中我们通过命名空间控制对名字的访问（namespace）<blockquote>
+<p>namespace</p>
+</blockquote>
+</li>
+<li>用途：解决名称冲突</li>
+<li>命名空间下可存放：变量、函数、结构体、类……</li>
+<li>命名空间必须要声明在全局作用域</li>
+<li>命名空间可以嵌套命名空间</li>
+<li>命名空间是开放的，可以随时将新成员添加到命名空间下</li>
+<li>命名空间可以匿名</li>
+<li>命名空间可以起别名</li>
+<li>命名空间的声明和实现可分离</li>
+</ul>
+<p>2.1. using声明</p>
+<ul>
+<li>using声明可使指定的标识符可用</li>
+<li>当using声明与就近原则同时出现，出错，尽量避免<br>2.2. using编译指令</li>
+<li>当using编译指令与就近原则同时出现，优先使用就近</li>
+<li>当using编译指令有多个，需要加作用域区分</li>
+<li>【注意】使用using声明或 using编译指令会增加命名冲突的可能性，也就是说，如果有命名空间，并在代码中使用作用域解析运算符，则不会出现二义性。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> KIngGlory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> LOL</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sunwukongId = <span class="number">2</span>;</span><br><span class="line"><span class="comment">/*  using KIngGlory::sunwukongId;</span></span><br><span class="line"><span class="comment">    err,当using声明与就近原则同时出现，出错，尽量避免</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sunwukongId &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//int sunwukongId = 2;/*当using编译指令与就近原则同时出现，优先使用就近原则*/</span></span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> KIngGlory;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> LOL;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; KIngGlory::sunwukongId &lt;&lt; <span class="built_in">endl</span>;<span class="comment">/*当using编译指令有多个，需要加作用域区分*/</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; LOL::sunwukongId &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//test01();</span></span><br><span class="line">    test02();</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>c++增强部分</li>
+</ol>
+<ul>
+<li>全局变量检测增强 c++严格检测出重定义</li>
+<li>函数检测增强，返回值检测、形参类型检测、函数调用参数个数</li>
+<li>类型转换检测曾强；</li>
+<li>struct（结构体）增强 （c中不可以有函数必须有关键字struct）c++可以放函数、创建结构体变量，可以简化关键字struct</li>
+<li>bool类型扩展（bool类型占一个字节大小）（c语言下没有bool类型 c++有bool类型）true（1） false（0）</li>
+<li>三目运算符增强（a&lt;b?a:b）=100;c++下表示给三目运算结果赋值。</li>
+<li>c语言三目运算表达式返回值为数据值，为右值，不能赋值</li>
+<li>c++三目运算表达式返回值为变量本身（引用）为左值，可以赋值<br>【左值和右值的概念】<br>在c++中可以放在赋值操作符左边的是左值，可以放到操作赋值符右面的是右值。有些变量既可以当左值又可以当右值<br>左值为：Lvalue，L代表Location表示内存可以寻址，可以赋值<br>右值为：Rvalue，R代表Read，就是可以知道它的值<br>int temp=10；temp在内存中有地址，10没有，但是可以Read到它的值</li>
+<li>const增强<blockquote>
+<p>全局const受到常量区保护，运行修改失败（c、c++结论相同）<br>局部const,c++下const修饰的变量称为常量，可以用来初始化数组（c语言中const是伪常量，不可以初始化数组分配到栈上）</p>
+</blockquote>
+</li>
+<li>c语言中全局const会被存储到制度数据段，c++中全局const当声明extern或者对变量取址时，编译器会分配存储地址，变量存储在只读数据段，两个都受其到了保护不可修改</li>
+<li>c语言中局部const存储在堆栈区，只是不能通过变量直接修改const制度变量的值，但是可以跳过编译器的检查，通过指针间接修改该const值</li>
+<li>c中const默认为外部链接，c++中const默认为内部链接，当c语言两个文件中都有const int a的时候编译器会报重定义错误。而在c++中就不会，因为c++中的const默认是内部链接如果想让c++中的const具有外部链接属性，必须显示声明为:extern const int a=10;<br>【c语言】<blockquote>
+<p>全局const 直接修改失败，间接修改语法通过，运行失败<br>局部const 直接修改失败，间接修改成功</p>
+</blockquote>
+</li>
+</ul>
+<p>【c++】</p>
+<blockquote>
+<p>全局const 直接修改失败，间接修改语法通过，运行失败<br>局部const 直接修改失败，间接修改失败<br>c++中const修饰的可称作常量</p>
+</blockquote>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/09/数据结构/">数据结构</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-08T16:00:00.000Z" itemprop="datePublished">
+    2018-07-09
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>数据结构是计算机存储，组织数据的方式，是相互之间存在一种或多种特定关系的数据元素集合</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>算法是特定问题求解步骤的描述，在计算机中表现为指令的有限序列。算法是独立存在的一种解决问题的方法和【思想】</p>
+<blockquote>
+<ul>
+<li>【以上二者区别：】</li>
+<li>算法是为了解决实际问题而设计的</li>
+<li>数据结构是算法需要处理的问题载体</li>
+<li>算法的特性：</li>
+</ul>
+<ol>
+<li>输入：</li>
+<li>输出：</li>
+<li>有穷性</li>
+<li>确定性</li>
+<li>可行性</li>
+</ol>
+</blockquote>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>逻辑结构</li>
+</ul>
+<ol>
+<li>集合结构</li>
+<li>线性结构</li>
+<li>树形结构</li>
+<li>图形结构 </li>
+</ol>
+<ul>
+<li>物理结构</li>
+</ul>
+<ol>
+<li>顺序存储结构</li>
+<li>链式存储结构</li>
+</ol>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+      <div class='ListMeta'>
+  <time datetime="2018-07-01T16:00:00.000Z" itemprop="datePublished">
+    2018-07-02
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/01/C进阶二/">指针</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-30T16:00:00.000Z" itemprop="datePublished">
+    2018-07-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C语言/">C语言</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>指针变量</li>
+<li>指针是一种数据类型，占用内存空间，用来保存内存地址<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *p1 = <span class="number">0x1234</span>;</span><br><span class="line">    <span class="keyword">int</span> ***p2 = <span class="number">0x1111</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1size:%d\n"</span>,<span class="keyword">sizeof</span>(p1));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p2size:%d\n"</span>,<span class="keyword">sizeof</span>(p2));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*指针是变量，指针本身也占内存空间，指针也可以被赋值*/</span></span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    p1 = &amp;a;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1 address:%p\n"</span>,&amp;p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"p1 address:%p\n"</span>,p1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a address:%p\n"</span>,&amp;a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="野指针和空指针"><a href="#野指针和空指针" class="headerlink" title="野指针和空指针"></a>野指针和空指针</h3><ul>
+<li>空指针：不能向NULL或者非法内存拷贝数据</li>
+<li>野指针：<blockquote>
+<ol>
+<li>指针变量未初始化：<br>任何指针变量刚被创建的时候不会自动成为NULL指针，他的缺省值是随机的，他会乱指一气，所以，指针变量在创建的同时应当被初始化，要么将指针设为NULL，要么指向合法内存</li>
+<li>指针释放后未置空:<br>有时指针在free或delete后未赋值NULL，便会使人们认为是合法的，不要被free和delete的名字迷惑，他们只是将指针所指的内存给释放掉，但并没有把指针本身干掉，此时指针指向的就是“垃圾”内存，释放后的指针应立即将指针置为NULL，防止产生野指针</li>
+<li>指针操作超越变量作用域<br>不要返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放<br>【规避野指针】<br>＞1. 初始化时置NULL<br>＞2. 释放时置NULL</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p>空指针可以重复释放、野指针不可以重复释放</p>
+<h3 id="指针的步长"><a href="#指针的步长" class="headerlink" title="指针的步长"></a>指针的步长</h3><ul>
+<li>+1后跳跃的字节数</li>
+<li>解引用解出的字节数</li>
+<li>自定义结构体步长<blockquote>
+<p>通过offsetof（结构体名称，属性）找到属性对应的偏移量<br>offsetof引入头文件：#include&lt;stddef.h&gt;</p>
+</blockquote>
+<h3 id="指针的件接赋值"><a href="#指针的件接赋值" class="headerlink" title="指针的件接赋值"></a>指针的件接赋值</h3></li>
+<li>三大条件<blockquote>
+<p>一个普通变量+指针变量（实参+形参）<br>建立关系<br>通过*操作内存</p>
+</blockquote>
+</li>
+<li>利用qt操作地址修改内存</li>
+</ul>
+<h3 id="指针做函数参数的输入输出特性"><a href="#指针做函数参数的输入输出特性" class="headerlink" title="指针做函数参数的输入输出特性"></a>指针做函数参数的输入输出特性</h3><ul>
+<li>输入特性：</li>
+</ul>
+<ol>
+<li>在主调函数中分配内存，被调函数使用</li>
+<li>分配在栈上和堆区</li>
+</ol>
+<ul>
+<li>输出特性：</li>
+</ul>
+<ol>
+<li>在被调函数中分配内存，主调函数使用</li>
+</ol>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/06/30/C进阶一/">内存</a>
         </h1>
       
       <div class='ListMeta'>
@@ -111,9 +527,401 @@
 </ol>
         
           <div class="more-link">
-            <a href="/2018/06/30/C进阶/#more">Read On »</a>
+            <a href="/2018/06/30/C进阶一/#more">Read On »</a>
           </div>
         
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/06/08/vim/">vim</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-07T16:00:00.000Z" itemprop="datePublished">
+    2018-06-08
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Linux/">Linux</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="vim的三种模式"><a href="#vim的三种模式" class="headerlink" title="vim的三种模式"></a>vim的三种模式</h3><p>vim的三种模式：命令模式、文本编辑模式、末行模式<br>在末行模式可以直接执行shell命令（：！shell）</p>
+<ul>
+<li>命令模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">ZZ（大写）</td>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">代码格式化</td>
+</tr>
+<tr>
+<td style="text-align:left">gg=G</td>
+<td style="text-align:left">代码格式化</td>
+</tr>
+<tr>
+<td style="text-align:left">光标移动</td>
+</tr>
+<tr>
+<td style="text-align:left">h</td>
+<td style="text-align:left">光标左移</td>
+</tr>
+<tr>
+<td style="text-align:left">j</td>
+<td style="text-align:left">光标下移</td>
+</tr>
+<tr>
+<td style="text-align:left">k</td>
+<td style="text-align:left">光标上移</td>
+</tr>
+<tr>
+<td style="text-align:left">l</td>
+<td style="text-align:left">光标右移</td>
+</tr>
+<tr>
+<td style="text-align:left">w</td>
+<td style="text-align:left">光标移动一个单词</td>
+</tr>
+<tr>
+<td style="text-align:left">gg</td>
+<td style="text-align:left">光标移动到文件的开头</td>
+</tr>
+<tr>
+<td style="text-align:left">G</td>
+<td style="text-align:left">光标移动到文件的末尾</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">光标移动到行首</td>
+</tr>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">光标移动到行尾</td>
+</tr>
+<tr>
+<td style="text-align:left">nG</td>
+<td style="text-align:left">行跳转，如：12G-跳转到12行</td>
+</tr>
+<tr>
+<td style="text-align:left">删除</td>
+</tr>
+<tr>
+<td style="text-align:left">x（小写）</td>
+<td style="text-align:left">删除光标后一个字符相当于Del</td>
+</tr>
+<tr>
+<td style="text-align:left">X（大写）</td>
+<td style="text-align:left">删除光标前一个字符，相当于Baskspace</td>
+</tr>
+<tr>
+<td style="text-align:left">dw</td>
+<td style="text-align:left">删除光标开始的位置的字，包含光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">d0</td>
+<td style="text-align:left">删除光标前本行所有内容，不包含光标所在字符</td>
+</tr>
+<tr>
+<td style="text-align:left">D[d$]</td>
+<td style="text-align:left">删除光标后本行所有内容，包含光标所在的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">dd</td>
+<td style="text-align:left">删除光标所在的行（本质其实就是剪切）</td>
+</tr>
+<tr>
+<td style="text-align:left">ndd</td>
+<td style="text-align:left">从光标当前行向下删除指定的行数，如：15dd</td>
+</tr>
+<tr>
+<td style="text-align:left">v/ctrl+v</td>
+<td style="text-align:left">使用h、j、k、l、移动选择内容然后按d删除【ctrl+v是列模式，块选择】</td>
+</tr>
+<tr>
+<td style="text-align:left">撤销和反撤销</td>
+</tr>
+<tr>
+<td style="text-align:left">u</td>
+<td style="text-align:left">一步一步撤销，相当于ctrl+z</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+r</td>
+<td style="text-align:left">反撤销，相当于word中的ctrl+y</td>
+</tr>
+<tr>
+<td style="text-align:left">复制粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">yy</td>
+<td style="text-align:left">复制当前行</td>
+</tr>
+<tr>
+<td style="text-align:left">nyy</td>
+<td style="text-align:left">赋值n行，如：10yy</td>
+</tr>
+<tr>
+<td style="text-align:left">P（大写）</td>
+<td style="text-align:left">在光标所在位置向上新开辟一行，粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">p小写</td>
+<td style="text-align:left">在光标所在位置向下新开辟一行，粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">剪切</td>
+<td style="text-align:left">按dd或ndd删除，实际将其剪切到了剪切板中，p粘贴就行</td>
+</tr>
+<tr>
+<td style="text-align:left">v/ctrl+v</td>
+<td style="text-align:left">使用h、j、k、l、移动选择内容然后按d删除【ctrl+v是列模式，块选择】，y复制，P/p光标前/后粘贴</td>
+</tr>
+<tr>
+<td style="text-align:left">替换操作</td>
+</tr>
+<tr>
+<td style="text-align:left">r</td>
+<td style="text-align:left">替换当前字符</td>
+</tr>
+<tr>
+<td style="text-align:left">R</td>
+<td style="text-align:left">替换当前光标后的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">查找</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">/xxxx，光标位置开始搜索，按n向下，N向上</td>
+</tr>
+<tr>
+<td style="text-align:left">？</td>
+<td style="text-align:left">？xxxx，将光标移动到带搜索的字符串上，然后按n向上，N向下</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">将光标移动到带搜索的字符串上，然后按n向上搜索，N向下</td>
+</tr>
+<tr>
+<td style="text-align:left">shift+k</td>
+<td style="text-align:left">在带搜索的字符串上按shif+k，或者K（大写）可以查看相关的帮助文档</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>从命令模式进入编辑模式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">在光标前插入</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:left">在光标后插入</td>
+</tr>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">在光标所在行的行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">在光标所在行的行尾插入</td>
+</tr>
+<tr>
+<td style="text-align:left">o（小写）</td>
+<td style="text-align:left">在光标所在的行的下面创建一行，行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">O（大写）</td>
+<td style="text-align:left">在光标所在行的上面创建一行，行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">s（小写）</td>
+<td style="text-align:left">删除光标后面的字符，从光标当前位置插入</td>
+</tr>
+<tr>
+<td style="text-align:left">S（大写）</td>
+<td style="text-align:left">删除光标所在当前行，从行首插入</td>
+</tr>
+<tr>
+<td style="text-align:left">块插入（列模式）</td>
+<td style="text-align:left">ctrl+v进入快选择，shift+i向前插入字符，按两下esc完成</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>末行模式（：）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">q</td>
+<td style="text-align:left">退出</td>
+</tr>
+<tr>
+<td style="text-align:left">q!</td>
+<td style="text-align:left">强制推出，不保存修改内容</td>
+</tr>
+<tr>
+<td style="text-align:left">w</td>
+<td style="text-align:left">保存修改不退出</td>
+</tr>
+<tr>
+<td style="text-align:left">wq</td>
+<td style="text-align:left">保存退出</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">相当于wq</td>
+</tr>
+<tr>
+<td style="text-align:left">替换操作</td>
+</tr>
+<tr>
+<td style="text-align:left">：s/old/new/</td>
+<td style="text-align:left">光标所在行的第一个old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：s/old/new/g</td>
+<td style="text-align:left">光标所在行所有old全部替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：m，ns/old/new/g</td>
+<td style="text-align:left">将第m行至第n行之间的old全部替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：%s/old/new/g</td>
+<td style="text-align:left">当前文件的所有old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：1，$s/old/new/g</td>
+<td style="text-align:left">当前文件的所有old替换为new</td>
+</tr>
+<tr>
+<td style="text-align:left">：%s/old/new/gc</td>
+<td style="text-align:left">当前文件的所有old替换为new（每次替换需要用户确认）</td>
+</tr>
+<tr>
+<td style="text-align:left">快速翻屏</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+u</td>
+<td style="text-align:left">向下翻半屏（up）光标向上移动</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+d</td>
+<td style="text-align:left">向下翻半屏（down）光标向下移动</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+f</td>
+<td style="text-align:left">向上翻一屏（front）</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl+b</td>
+<td style="text-align:left">向后翻一屏（back）</td>
+</tr>
+<tr>
+<td style="text-align:left">分屏操作</td>
+</tr>
+<tr>
+<td style="text-align:left">sp</td>
+<td style="text-align:left">当前文件水平分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">vsp</td>
+<td style="text-align:left">当前文件垂直分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">sp文件名</td>
+<td style="text-align:left">当前文件和另一个文件水平分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">vsp文件名</td>
+<td style="text-align:left">当前文件和另一个文件垂直分屏</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl-w-w</td>
+<td style="text-align:left">在多个窗口切换光标</td>
+</tr>
+<tr>
+<td style="text-align:left">wall/wqall/xall/qall/qall!</td>
+<td style="text-align:left">保存/保存退出/保存退出/退出/强制退出分屏窗口</td>
+</tr>
+<tr>
+<td style="text-align:left">在打开文件之前分屏（n可以省略水平/垂直）</td>
+<td style="text-align:left">vim -on/On file1 file2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>末行模式回到命令模式（按两下esc或者backspace或者回车）</li>
+</ul>
+<h3 id="vim的配置文件"><a href="#vim的配置文件" class="headerlink" title="vim的配置文件"></a>vim的配置文件</h3><ul>
+<li>用户级配置文件：~/.vimrc(修改只对当前用户作用，不会影响其他用户)</li>
+<li>系统级别配置文件：/etc/vim/vimrc（修改对所有用户作用）</li>
+<li>我的配置文件：<blockquote>
+</blockquote>
+“ vundle 环境设置<br>filetype off<br>set rtp+=~/.vim/bundle/Vundle.vim<br>“ vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间<br>call vundle#begin()<br>Plugin ‘VundleVim/Vundle.vim’<br>Plugin ‘altercation/vim-colors-solarized’<br>Plugin ‘tomasr/molokai’<br>Plugin ‘vim-scripts/phd’<br>Plugin ‘Lokaltog/vim-powerline’<br>Plugin ‘octol/vim-cpp-enhanced-highlight’<br>Plugin ‘nathanaelkane/vim-indent-guides’<br>Plugin ‘derekwyatt/vim-fswitch’<br>Plugin ‘kshenoy/vim-signature’<br>Plugin ‘vim-scripts/BOOKMARKS–Mark-and-Highlight-Full-Lines’<br>Plugin ‘majutsushi/tagbar’<br>Plugin ‘vim-scripts/indexer.tar.gz’<br>Plugin ‘vim-scripts/DfrankUtil’<br>Plugin ‘vim-scripts/vimprj’<br>Plugin ‘dyng/ctrlsf.vim’<br>Plugin ‘terryma/vim-multiple-cursors’<br>Plugin ‘scrooloose/nerdcommenter’<br>Plugin ‘vim-scripts/DrawIt’<br>Plugin ‘SirVer/ultisnips’<br>Plugin ‘Valloric/YouCompleteMe’<br>Plugin ‘derekwyatt/vim-protodef’<br>Plugin ‘scrooloose/nerdtree’<br>Plugin ‘fholgado/minibufexpl.vim’<br>Plugin ‘gcmt/wildfire.vim’<br>Plugin ‘sjl/gundo.vim’<br>Plugin ‘Lokaltog/vim-easymotion’<br>Plugin ‘suan/vim-instant-markdown’<br>Plugin ‘lilydjwg/fcitx.vim’<br>“ 插件列表结束<br>call vundle#end()<br>filetype plugin indent on<br>“ 配色方案<br>set background=dark<br>“colorscheme solarized<br>colorscheme molokai<br>“colorscheme phd<br>“ 禁止光标闪烁<br>set gcr=a:block-blinkon0<br>“ 禁止显示滚动条<br>set guioptions-=l<br>set guioptions-=L<br>set guioptions-=r<br>set guioptions-=R<br>“ 禁止显示菜单和工具条<br>set guioptions-=m<br>set guioptions-=T<br>“ 总是显示状态栏<br>set laststatus=2<br>“ 显示光标当前位置<br>set ruler<br>“ 开启行号显示<br>set number<br>“ 高亮显示当前行/列<br>set cursorline<br>set cursorcolumn<br>“ 高亮显示搜索结果<br>set hlsearch<br>“ 开启语法高亮功能<br>syntax enable<br>“ 允许用指定语法高亮配色方案替换默认方案<br>syntax on<br>“ 自适应不同语言的智能缩进<br>filetype indent on<br>“ 将制表符扩展为空格<br>set expandtab<br>“ 设置编辑时制表符占用空格数<br>set tabstop=4<br>“ 设置格式化时制表符占用空格数<br>set shiftwidth=4<br>“ 让 vim 把连续数量的空格视为一个制表符<br>set softtabstop=4<br>“ 随 vim 自启动<br>let g:indent_guides_enable_on_vim_startup=1<br>“ 从第二层开始可视化显示缩进<br>let g:indent_guides_start_level=2<br>“ 色块宽度<br>let g:indent_guides_guide_size=1<br>“字体<br>set guifont=YaHei\ Consolas\ Hybrid\ 14<br>“ 快捷键 i 开/关缩进可视化<br>:nmap <silent> <leader>i <plug>IndentGuidesToggle</plug></leader></silent></li>
+</ul>
+
       
     </div>
 </article>
@@ -183,6 +991,562 @@
     <header class="title">
       
         <h1>
+          <a href="/2018/06/07/Linux/">Linux基础</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-06-06T16:00:00.000Z" itemprop="datePublished">
+    2018-06-07
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Linux/">Linux</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/study/">study</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="命令解析器"><a href="#命令解析器" class="headerlink" title="命令解析器"></a>命令解析器</h3><ul>
+<li>shell就是命令解析器</li>
+<li>命令解析器作用：对用户输入到终端的命令进行解析调用对应的执行程序</li>
+<li>shell在在寻找命令的时候是按照$PATH环境变量搜索命令，若找不到就报错，</li>
+<li>执行 echo $PATH可产看PATH环境变量的值</li>
+<li>查看当前系统下有哪些shell：cat/etc/shells</li>
+<li>查看当前系统所使用的shell：echo $SHELL</li>
+</ul>
+<h3 id="Linux-下常用快捷键"><a href="#Linux-下常用快捷键" class="headerlink" title="Linux 下常用快捷键"></a>Linux 下常用快捷键</h3><ul>
+<li>遍历输入的历史命令：ctrl+p（↑）ctrl+n(↓)</li>
+<li>history  ：显示用户输入的所有命令</li>
+<li>光标移动<blockquote>
+<ul>
+<li>ctrl+b（←）光标左移</li>
+<li>ctrl+f（→）光标右移</li>
+<li>ctrl+a（home）移动到行首</li>
+<li>ctrl+e（end）移动到行尾</li>
+</ul>
+</blockquote>
+</li>
+<li>字符删除<blockquote>
+<ul>
+<li>ctrl+h(Backspace)删除光标前边的字符</li>
+<li>ctrl+d删除光标后边的字符</li>
+<li>ctrl+u删除光标前所有内容</li>
+<li>ctrl+k删除光标后所有内容</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="Linux-下的目录结构"><a href="#Linux-下的目录结构" class="headerlink" title="Linux 下的目录结构"></a>Linux 下的目录结构</h3><ul>
+<li>倒树状 根目录用“/”</li>
+</ul>
+<h5 id="主要目录简介"><a href="#主要目录简介" class="headerlink" title="主要目录简介"></a>主要目录简介</h5><ul>
+<li>/bin（binary，二进制文件，存放可执行程序，shell命令，如：ls,rm,等命令存放目录）</li>
+<li>/sbin（Super User，存放系统管理员使用的系统管理程序，如ifconfig，halt，shutdown，reboot等系统命令）</li>
+<li>/dev（device，设备文件，Linux下一切皆文件，硬件鼠标键盘文件，字符设备块设备文件……）</li>
+<li>/lib（动态库文件）</li>
+<li>/mnt（手动挂载目录）</li>
+<li>/media（外设的自动挂载目录，如光驱）</li>
+<li>/root（root用户家目录）</li>
+<li>/usr（unix system resource   /usr/include目录存放头文件）</li>
+<li>/etc(存放配置文件:etc/passwd、etc/group、etc/profile（系统的配置文件，修改该文件会影响这个系统下面的所有用户）)</li>
+<li>/opt（安装第三方应用程序，如oracle数据库）</li>
+<li>/home（Linux操作系统所有用户的家目录（家目录又叫宿主目录或者主目录））</li>
+<li>tmp（存放临时文件，存放在这个目录下的文件会在系统重新启动后自动清除）<br>【”.”表示当前目录】<br>【”..”表示当前目录上一级目录】</li>
+</ul>
+<h3 id="文件和目录操作命令"><a href="#文件和目录操作命令" class="headerlink" title="文件和目录操作命令"></a>文件和目录操作命令</h3><ul>
+<li><p>ls（查看指定目录下的文件信息）</p>
+<blockquote>
+<p>ls -a:列出当前目录下的所有文件<br>ls -R:递归方式列出所有目录中的内容<br>ls -l:列出文件的详细信息（详细信息包含7部分内容）<br>ls -ltr:按照时间递归排序显示详细信息</p>
+<blockquote>
+<ol>
+<li>第一个字符:表示文件类型<blockquote>
+<ul>
+<li>-:普通文件</li>
+<li>d:目录文件</li>
+<li>l:软链接（符号链接），相当于windows中的快捷方式</li>
+<li>s:socket套接字</li>
+<li>p:管道</li>
+<li>b:块设备（磁盘）</li>
+<li>c:字符设备（键盘）</li>
+</ul>
+</blockquote>
+</li>
+<li>第2-10个字符：用户操作权限<blockquote>
+<ul>
+<li>234字符：文件所有者对文件的操作权限</li>
+<li>567字符：文件所属组用户对文件的操作权限</li>
+<li>8910字符：其他人对文件的操作权限</li>
+</ul>
+</blockquote>
+</li>
+<li>硬链接计数<blockquote>
+<ul>
+<li>对目录而言，链接计数等于该目录下所有目录总数，但不包括该目录的自目录下的目录文件数量</li>
+<li>对于文件而言，指的是该文件所有的硬链接文件数量</li>
+</ul>
+</blockquote>
+</li>
+<li>文件所有者：</li>
+<li>文件所属组</li>
+<li>文件大小（目录文件指的是是目录大小即4k）</li>
+<li>文件创建时间或最后修改时间</li>
+</ol>
+</blockquote>
+</blockquote>
+</li>
+<li><p>cd（切换目录）</p>
+</li>
+<li>pwd（查看当前工作目录）</li>
+<li>which（显示命令所在目录，如which ls）</li>
+<li>touch（文件不存在创建空文件，文件存在更新文件的最后修改时间）</li>
+<li>mkdir（创建新目录，可创建多级目录加参数：-p）</li>
+<li>rmdir（删除空目录）</li>
+<li>rm（删除文件：-r 递归删除目录 -i提示用户是否删除 -f:强制删除）</li>
+<li>文件删除不易恢复，操作需谨慎</li>
+<li>cp（拷贝命令，用法：cp 源 目标）</li>
+<li><p>cp命令需注意几种情况：</p>
+<blockquote>
+<ol>
+<li>若有目录的拷贝需要使用 -r参数</li>
+<li>cp file1 file2(不存在):创建file2，再将file1拷贝到file2中</li>
+<li>cp file1 file2（存在）：file1覆盖file2</li>
+<li>cp -r dir1 dir2（存在）：将dir1在内的目录拷贝到dir2中</li>
+<li>cp -r dir1 dir2（不存在）：创建dair2，将dir1中的内容拷贝到dir2，不包括dir1</li>
+<li>cp拷贝目录也可以用-a参数，这样可以保留被拷贝的文件的一些属性信息</li>
+</ol>
+</blockquote>
+</li>
+<li><p>mv(移动文件或者文件重命名：mv 源 目标)</p>
+<ol>
+<li>重命名时若源文件和目标文件均存在时：实际将源文件改名为目标文件且源文件覆盖目标文件<br>2.移动：目标一定是目录；若源也是目录：那么将源移动到目录中以子目录存在</li>
+</ol>
+</li>
+<li>cat（将文件内容一次性输出到终端若文件太长无法全部显示）<br>cat可用于文件重定向：cat file1&gt;file2,相当于cp file1 file2</li>
+<li>more（文件内容分页显示到终端，只能向下浏览不能回退 ：more+文件名；下一行:回车 下一页：空格 退出 q）</li>
+<li>less（将文件分页显示到终端，可上下浏览）<br>显示下一行：回车、ctrl+p、↓<br>显示上一行：ctrl+n、↑<br>显示下一页：空格、PageDown<br>显示上一页：PageUp<br>推出：q</li>
+<li>head（文件开头起查看前n行：head -n（行数） 文件名；默认显示前10行）</li>
+<li>tail（从文件尾部向上查看最后n行内容：tail -n（行数）文件名，默认10行）<br>【tail显示日志：tail -f test.log(一个终端tail -f test.log，另一个终端：echo”hello world”&gt;&gt;test.log)】</li>
+<li>ln -s（软链接（类似windows的快捷方式）；文件目录均可设置软链接）<br>【注意：ln -s创建软链接要用绝对路径；软链接文件大小为：路径+文件名的总字节数】</li>
+<li>ln（硬链接：文件名 硬链接名）<ol>
+<li>硬链接不能建在目录上</li>
+<li>硬链接不能跨文件系统：硬链接文件和源文件的inode是相同的，文件系统的inode要求唯一，跨文件系统可能会使inode不同</li>
+<li>硬链接的本质：是不同的文件名所在的inode节点是相同的，相同的inode节点指向了相同的数据块，所以他们的文件内容是一样的，文件内容会同步</li>
+<li>硬链接可以起到同步文件的作用：修改file内容其他硬链接文件会同步修改</li>
+<li>删除文件的时候，只要硬链接计数部位0，不会真正删除，起到保护文件的作用</li>
+</ol>
+</li>
+<li>wc（显示文件行数，字节数，单词数）<blockquote>
+<p>wc -l file 显示文件的总行数<br>wc -c file 显示文件的总字节数<br>wc -w file 显示文件的总单词数<br>wc file 显示文件的总行数，单词数，总字节数</p>
+</blockquote>
+</li>
+<li>whoami（显示当前登陆的用户名）</li>
+</ul>
+<h3 id="用户、用户组、用户权限"><a href="#用户、用户组、用户权限" class="headerlink" title="用户、用户组、用户权限"></a>用户、用户组、用户权限</h3><ul>
+<li>chmod（修改文件权限）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">文字设定法：chmod[who][+或-或=][mode]文件名</th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">操作对象[who]</td>
+<td style="text-align:left">操作符【+、-、=】</td>
+<td style="text-align:left">权限【mode】</td>
+</tr>
+<tr>
+<td style="text-align:left">u—(user)用户、</td>
+<td style="text-align:left">+:添加权限</td>
+<td style="text-align:left">r—读</td>
+</tr>
+<tr>
+<td style="text-align:left">g—（group）用户组（同组用户）</td>
+<td style="text-align:left">-：取消权限</td>
+<td style="text-align:left">w—写</td>
+</tr>
+<tr>
+<td style="text-align:left">o—(other)其他用户、</td>
+<td style="text-align:left">=：赋予给定权限并取消其他权限</td>
+<td style="text-align:left">x—执行</td>
+</tr>
+<tr>
+<td style="text-align:left">a—(all)所有用户【默认】</td>
+</tr>
+<tr>
+<td style="text-align:left">示例：</td>
+<td style="text-align:left">给文件file.txt的所有者和所属组添加读写权限</td>
+<td style="text-align:left">chmod ug+wr file.txt</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数字设定法：chmod [+、-、=(可省略)][mode]文件名</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">没有权限（-）</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">执行权限（x）</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">写权限（w）</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">读权限（r）</td>
+</tr>
+<tr>
+<td style="text-align:left">示例：给file.txt设置rw-rw-r–</td>
+<td style="text-align:left">chmod 664 file.txt</td>
+</tr>
+<tr>
+<td style="text-align:left">注意</td>
+<td style="text-align:left">使用数字设定法一定要使用3位的8进制数（如：066）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>chown （修改文件所有者和所属组）<blockquote>
+<p>chown 文件所有者 文件名：sudo chown me file.txt<br>chown 文件所有者：文件所属组 文件名：sudo chown me:/. me file.txt<br>注意：sudo adduser 用户名（创建新用户）</p>
+</blockquote>
+</li>
+<li>chgrp（修改文件所属组）<blockquote>
+<p>chgrp 用户组 文件或目录名：sudo chgrp me file.txt(将file.txt所属组改为me)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><ul>
+<li>按文件名查询：find 路径 -name “文件名”</li>
+<li><p>按文件类型查询：find 路径 -type 类型</p>
+<blockquote>
+<p>文件类型（type）：<br>普通文件用f表示而不是”-“;<br>d—–目录（dir）<br>l—–软链接（符号链接）<br>b—–块设备文件<br>c—–字符设备文件<br>s—–socket文件（套接字）<br>p—–管道文件</p>
+</blockquote>
+</li>
+<li><p>按文件大小查询：find 路径 -size 范围</p>
+<blockquote>
+<p>范围：大于：+ ，+100k；”+”小于：-，-100k；等于：不加符号：100k<br>大小：M（大写）、k（小写）、c（表示字节数）<br>例如：查询家目录下大于50k，小于100k的文件：find ~/-size+50k-100k</p>
+</blockquote>
+</li>
+<li><p>按文件日期查询：</p>
+<blockquote>
+<p>创建日期：-ctime -n/+n（n天以内/n天以外）<br>修改日期：-mtime -n/+n<br>访问日期：-atime -n/+n</p>
+</blockquote>
+</li>
+<li><p>按深度</p>
+<blockquote>
+<p>-maxdepth n(层数)：搜索n层以下的目录，搜索的层数不超过n层<br>-mindepth n(层数)：搜索n层以上的目录，搜索的层数不超过n层</p>
+</blockquote>
+</li>
+<li><p>高级查找：</p>
+<blockquote>
+<ol>
+<li>find 路径 查找规则 -exec shell命令 {}\;（{}中不能有空格）</li>
+<li>find 路径 查找规则 -ok shell命令 {}\;(ok比较安全，在执行操作前询问是否确认操作)</li>
+<li>find 路径 查找规则 | xargs shell命令<br>如：查找当前目录下所有目录，列出目录中文件详细信息</li>
+<li>find ./ -type d -exec ls -l {}\;</li>
+<li>find ./ -type d -ok ls -l {}\;</li>
+<li>find ./ -type d |xargs ls -l</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><ul>
+<li><p>grep -r（有目录）”查找的内容”搜索的路径</p>
+<blockquote>
+<p>-r :若是目录，则递归搜索<br>-n :显示查到内容所在行号<br>-i :忽略大小写查找<br>-v :不显示含有某字符串<br>如：搜索当前目录下包含helloworld字符串的文件<br>grep -r -n-i “HELLo world” ./</p>
+</blockquote>
+</li>
+<li><p>find 和 grep结合使用：find 查找路径 查找规则 |xargs grep 参数 “查找内容”</p>
+<blockquote>
+<p>如：find . -name”*.c”|xargs grep -n “main”</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Linux-下常用压缩工具"><a href="#Linux-下常用压缩工具" class="headerlink" title="Linux 下常用压缩工具"></a>Linux 下常用压缩工具</h3><ol>
+<li>tar 工具</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">z:</td>
+<td style="text-align:left">用gzip来压缩/解压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:left">j:</td>
+<td style="text-align:left">用bzip2来压缩/解压缩文件</td>
+</tr>
+<tr>
+<td style="text-align:left">c:</td>
+<td style="text-align:left">create，创建新的压缩文件，与x互斥使用</td>
+</tr>
+<tr>
+<td style="text-align:left">x:</td>
+<td style="text-align:left">从压缩文件中释放文件，与c互斥使用</td>
+</tr>
+<tr>
+<td style="text-align:left">v:</td>
+<td style="text-align:left">详细报告tar处理的文件信息</td>
+</tr>
+<tr>
+<td style="text-align:left">f:</td>
+<td style="text-align:left">指定压缩文件的名字</td>
+</tr>
+<tr>
+<td style="text-align:left">t:</td>
+<td style="text-align:left">查看压缩包中有哪些文件</td>
+</tr>
+<tr>
+<td style="text-align:left">===============</td>
+<td style="text-align:left">=========================================</td>
+</tr>
+<tr>
+<td style="text-align:left">gzip和bzip2</td>
+<td style="text-align:left">不能压缩目录，只能一个一个文件进行压缩，压缩后会使原文件消失</td>
+</tr>
+<tr>
+<td style="text-align:left">gzip *</td>
+<td style="text-align:left">压缩当前目录下所有的文件，但是目录不能压缩</td>
+</tr>
+<tr>
+<td style="text-align:left">gunzip *</td>
+<td style="text-align:left">解压当前目录下所有的.gz文件</td>
+</tr>
+<tr>
+<td style="text-align:left">bizip2 *</td>
+<td style="text-align:left">压缩当前目录下所有的文件，但是目录不能压缩</td>
+</tr>
+<tr>
+<td style="text-align:left">bunzip2 *</td>
+<td style="text-align:left">解压当前目录下所有的.bz2文件</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>压缩：<blockquote>
+<ul>
+<li>tar cvf 压缩包的名字.tar 要打包压缩的文件或目录</li>
+<li>tar zxvf 压缩包名字.tar.gz 要打包压缩的文件或目录</li>
+<li>tar jcvf 压缩包的名字.tar.bz2 要打包压缩的文件或目录</li>
+</ul>
+</blockquote>
+</li>
+<li>解压缩：<blockquote>
+<ul>
+<li>tar xvf  xxxx.tar.gz</li>
+<li>tar zxvf xxxx.tar.gz</li>
+<li>tar jxvf xxxx.tar.bz2</li>
+</ul>
+</blockquote>
+</li>
+<li>解压到指定目录：-C（大写）【tar zxvf xxx.tar.gz -C 路径】</li>
+<li>查看压缩包中有哪些文件：tar -tvf xxx.tar</li>
+</ul>
+<ol start="2">
+<li>rar 工具（需要安装）</li>
+</ol>
+<ul>
+<li>压缩：<blockquote>
+<ul>
+<li>rar a -r 要压缩的文件或目录（-r参数表示递归用来压缩目录）</li>
+<li>如：rar a -r my aa bb dir(将aa、bb、dir、压缩到my.rar文件中)</li>
+<li>压缩新文件无需指定后缀</li>
+</ul>
+</blockquote>
+</li>
+<li>解压缩：<blockquote>
+<ul>
+<li>rar x  xxx.rar 解压目录</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ol start="3">
+<li>zip工具</li>
+</ol>
+<ul>
+<li>压缩：<blockquote>
+<ul>
+<li>zip -r 压缩包名 要压缩的文件或目录</li>
+<li>如：zip -r xxx file dir(将file、dir压缩成xxx.zip文件)</li>
+</ul>
+</blockquote>
+</li>
+<li>解压缩：<blockquote>
+<p>unzip 压缩包名 -d 解压目录（若解压目录不存在则会自动创建）<br>如: unzip xxx.zip -d /home/me/test/first</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Ubuntu-下软件安装和卸载"><a href="#Ubuntu-下软件安装和卸载" class="headerlink" title="Ubuntu 下软件安装和卸载"></a>Ubuntu 下软件安装和卸载</h3><ul>
+<li>在线安装：sudo apt-get install 软件名</li>
+<li>在线卸载：sudo apt-get remove 软件名</li>
+<li>在线更新软件列表：sudo apt-get update</li>
+<li>清理安装包（在线安装下载的缓存:/var/cache/apt/archives）：sudo apt-get clean</li>
+</ul>
+<h5 id="deb包安装和卸载"><a href="#deb包安装和卸载" class="headerlink" title="deb包安装和卸载"></a>deb包安装和卸载</h5><p>安装：sudo dpkg -i xxx.deb<br>卸载：sudo dpkg -r 软件名</p>
+<h3 id="gcc编译器"><a href="#gcc编译器" class="headerlink" title="gcc编译器"></a>gcc编译器</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">编译命令</th>
+<th style="text-align:left">生成文件</th>
+<th style="text-align:left">操作内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">gcc -E XXX.c</td>
+<td style="text-align:left">XXX.i</td>
+<td style="text-align:left">预处理器（cpp）：头文件展开，宏替换，去掉注释和空行</td>
+</tr>
+<tr>
+<td style="text-align:left">gcc -S XXX.i</td>
+<td style="text-align:left">XXX.s</td>
+<td style="text-align:left">编译器（gcc）：源文件编译成汇编文件</td>
+</tr>
+<tr>
+<td style="text-align:left">gcc -c XXX.s</td>
+<td style="text-align:left">XXX.o</td>
+<td style="text-align:left">汇编器（as）：将汇编文件编译成二进制文件</td>
+</tr>
+<tr>
+<td style="text-align:left">gcc XXX.o</td>
+<td style="text-align:left">a.out</td>
+<td style="text-align:left">连接器（ld）：将函数库中相应的代码组合到目标文件中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gcc常用参数"><a href="#gcc常用参数" class="headerlink" title="gcc常用参数"></a>gcc常用参数</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-v</td>
+<td style="text-align:left">查看gcc版本号，–version也可以</td>
+</tr>
+<tr>
+<td style="text-align:left">-E</td>
+<td style="text-align:left">生成预处理文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-S（大写）</td>
+<td style="text-align:left">生成汇编文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-c（小写）</td>
+<td style="text-align:left">只编译，生成.o文件，通常称为目标文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-I</td>
+<td style="text-align:left">指定头文件所在路径</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">指定库文件所在路径</td>
+</tr>
+<tr>
+<td style="text-align:left">-l</td>
+<td style="text-align:left">指定库的名字</td>
+</tr>
+<tr>
+<td style="text-align:left">-o</td>
+<td style="text-align:left">指定生成的目标文件的名字</td>
+</tr>
+<tr>
+<td style="text-align:left">-g</td>
+<td style="text-align:left">包含调试信息，使用gdb调试需要添加-g参数</td>
+</tr>
+<tr>
+<td style="text-align:left">-On</td>
+<td style="text-align:left">n=0~3 编译优化，n越大优化的越多</td>
+</tr>
+<tr>
+<td style="text-align:left">-Wall</td>
+<td style="text-align:left">提示更多警告信息</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">编译时定义宏</td>
+</tr>
+</tbody>
+</table>
+<h3 id="库的制作和使用"><a href="#库的制作和使用" class="headerlink" title="库的制作和使用"></a>库的制作和使用</h3><ul>
+<li>库是二进制文件，是源码我呢见的另一种表现形式，是加了密的源代码；是一些功能相近或者是相似的函数的集合体</li>
+<li>使用库的好处:<br>提高代码的复用性，提高程序的健壮性<br>减少开发者的代码开发量，缩短开发周期</li>
+<li>库的使用<br>头文件（包含了库函数的声明）<br>库文件（包含了库函数的代码实现）<br>【注意：】库不能单独使用，只能作为其他执行程序的一部分完成某些功能，也就是说只能被其他程序调用才能使用</li>
+</ul>
+<h4 id="静态库（static-library）"><a href="#静态库（static-library）" class="headerlink" title="静态库（static library）"></a>静态库（static library）</h4><ul>
+<li>制作<ol>
+<li>gcc -c *.c（源） 分别生成 .o文件</li>
+<li>ar rcs lib静态库名.a  .o文件</li>
+<li>静态库的命名：lib+自定义库名.a</li>
+</ol>
+</li>
+<li>使用<br>gcc 调用库的.c -L要连接的库所在路径 -I头文件所在路径 -l静态库名（去掉前缀lib和后缀.a）-o 目标名</li>
+</ul>
+<h3 id="动态库（共享库-shared-library）"><a href="#动态库（共享库-shared-library）" class="headerlink" title="动态库（共享库 shared library）"></a>动态库（共享库 shared library）</h3><ul>
+<li>制作<ol>
+<li>gcc -fpic -c *.c(源) 生成.o 文件（-fpic创建与地址无关的编译程序）</li>
+<li>gcc -shared *.o -o lib动态库名.so</li>
+</ol>
+</li>
+<li>使用<ol>
+<li>gcc 调用库的.c -L要连接的库所在路径 -I头文件所在路径 -l动态库名（去掉前缀lib和后缀.so）-o 目标名</li>
+<li>配置依赖的库的绝对路径<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:库路经（可临时执行生效一次，若要永久有效则需将此行写入~/.bashrc中或者系统配置文件/etc/profile中，或者把库拷贝到系统库/lib中或者/usr/lib中；以上建议写入当前用户 ~/.bashrc配置文件中执行生效）</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2018/06/05/经典案例/">经典案例</a>
         </h1>
       
@@ -221,448 +1585,6 @@
         
           <div class="more-link">
             <a href="/2018/06/05/经典案例/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/06/03/Golang/">初识go语言</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-06-02T16:00:00.000Z" itemprop="datePublished">
-    2018-06-03
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/go语言/">go语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><p>Go是一种开源的程序设计语言，它意在使得人们能够方便的构建简单、可靠、搞笑的软件——golang.org<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  <span class="comment">/*每个go源代码开头都是package声明，代表该go代码所属的包*/</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span>  <span class="comment">/*导入包，fmt是包名*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;    <span class="comment">/*函数入口，此处语法花括号一定跟在这里写*/</span></span><br><span class="line">    fmt.Println(<span class="string">"Hello world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-          <div class="more-link">
-            <a href="/2018/06/03/Golang/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/27/文件操作/">文件操作</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-26T16:00:00.000Z" itemprop="datePublished">
-    2018-05-27
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="磁盘文件和设备文件"><a href="#磁盘文件和设备文件" class="headerlink" title="磁盘文件和设备文件"></a>磁盘文件和设备文件</h3><ul>
-<li>磁盘文件<br>指一组相关数据的有序集合，通常存储在外部介质（如磁盘）上，使用时才调入内存</li>
-<li>设备文件<br>在操作系统中把每一个与主机相连的输入、输出设备看作一个文件，把他们的输入输出等同于对磁盘文件的读和写<blockquote>
-<p>磁盘文件的分类<br>计算机的存储在物理上是二进制的，所以物理上所有的磁盘文件本质上都是一样的：以字节为单位进行顺序存储</p>
-</blockquote>
-</li>
-<li>从用户或者操作系统的使用角度（逻辑上）把文件分为：</li>
-</ul>
-<ol>
-<li>文本文件：基于字符编码的文件</li>
-</ol>
-<ul>
-<li>基于字符编码，常见编码有ASCII、UNICODE等</li>
-<li>一般可以使用文本编辑器直接打开</li>
-<li>数5678的以ASCII存储形式（ASCII）为：00110101 00110110 00110111 00111000</li>
-</ul>
-<ol start="2">
-<li>二进制文件：基于值编码的文件</li>
-</ol>
-<ul>
-<li>基于值编码，自己根据具体应用，指定某个值是什么意思</li>
-<li>把内存中的数据按其在内存中的存储形式原样输出到磁盘上</li>
-<li>数5678的存储形式（二进制码）为：00010110 00101110
-        
-          <div class="more-link">
-            <a href="/2018/05/27/文件操作/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/24/结构体/">结构体</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-23T16:00:00.000Z" itemprop="datePublished">
-    2018-05-24
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="结构体定义"><a href="#结构体定义" class="headerlink" title="结构体定义"></a>结构体定义</h3><ul>
-<li><p>结构体定义语法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;            <span class="comment">/*成员变量*/</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];      <span class="comment">/*不允许赋初值*/</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;;           <span class="comment">/*仅仅是一个数据类型*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结构体变量定义及初始化</p>
-</li>
-</ul>
-<ol>
-<li>定义结构体变量的方式：</li>
-</ol>
-<ul>
-<li>先声明结构体类型在定义变量名</li>
-<li>在声明类型的同时定义变量</li>
-<li>直接定义结构体类型变量（无类型名）</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2018/05/24/结构体/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/23/内存管理/">内存管理</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-22T16:00:00.000Z" itemprop="datePublished">
-    2018-05-23
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>c语言变量的作用域分为：</p>
-<blockquote>
-<p>代码块作用域<br>函数作用域<br>文件作用域</p>
-</blockquote>
-<p>一. 局部变量</p>
-<blockquote>
-<p>定义在函数内部的变量（auto关键字用来修饰局部变量通常可以省略）<br>如果没有赋初值，内容为随机。</p>
-</blockquote>
-<p>二.静态（static）局部变量</p>
-<blockquote>
-<p>static局部变量的作用域也是在定义的函数内有效<br>static局部变量的生命周期和程序运行的周期一样，同时static局部变量的值只初始化一次，但可以赋值多次<br>static局部变量若未赋以初值，则由系统自动赋值：数值型变量自动赋初值0，字符型变量赋空字符<br>如果局部变量和static变量重名采用就近原则</p>
-</blockquote>
-        
-          <div class="more-link">
-            <a href="/2018/05/23/内存管理/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/18/指针/">指针</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-17T16:00:00.000Z" itemprop="datePublished">
-    2018-05-18
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><ul>
-<li>内存地址：内存区的每一个字节都有一个编号，这个编号就是内存地址</li>
-<li>指针就是内存地址（指针是内存单元的编号，指针变量是存放地址的变量）</li>
-</ul>
-<h3 id="指针变量的定义和使用"><a href="#指针变量的定义和使用" class="headerlink" title="指针变量的定义和使用"></a>指针变量的定义和使用</h3><ul>
-<li>指针也是一种数据类型，指针变量也是一种变量。</li>
-<li>指针变量指向谁，就把谁的地址赋值给指针变量</li>
-<li>“*”操作符操作的是指针变量指向的内存空间</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> b=<span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,%p\n"</span>,&amp;a,&amp;b); <span class="comment">/*打印a，b的地址*/</span></span><br><span class="line">             <span class="comment">/*定义了一个指针类型的变量，可以指向一个int类型变量的地址*/</span></span><br><span class="line">    <span class="keyword">int</span> *p; <span class="comment">/*int*代表的是一种数据类型，int*指针类型，p才是变量名*/</span>        </span><br><span class="line">    p=&amp;a;  <span class="comment">/*将a的地址赋值给变量p，p也是一个变量，值是一个内存地址编号*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,*p);<span class="comment">/*p指向了a的地址，*p就是a的值*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *p1=&amp;b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c\n"</span>,*p1);  <span class="comment">/*p1指向了b的地址，*p1就是b的值*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注意：&amp;可以取得一个变量在内存中的地址，但是，不能取及寄存器变量，因为寄存器变量不再内存里，而在cpu里面，所以是没有地址的。
-        
-          <div class="more-link">
-            <a href="/2018/05/18/指针/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/17/函数/">函数</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-16T16:00:00.000Z" itemprop="datePublished">
-    2018-05-17
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <blockquote>
-<p>概念</p>
-</blockquote>
-<ul>
-<li>完成某一特定功能的代码段</li>
-<li>封装函数的目的，代码的复用、模块化项目文件结构</li>
-<li>程序就像公司，公司由部门组成，部门类似于函数</li>
-</ul>
-<h3 id="函数的分类"><a href="#函数的分类" class="headerlink" title="函数的分类"></a>函数的分类</h3><ul>
-<li>系统函数(库函数)：<blockquote>
-<p>printf、scanf、puts、gets、。。。。。。。。。。<br>掌握其函数功能、函数原型：函数名、函数返回值。<br>调用：引入对应头文件</p>
-</blockquote>
-</li>
-<li>用户自定义函数
-        
-          <div class="more-link">
-            <a href="/2018/05/17/函数/#more">Read On »</a>
-          </div>
-        
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2018/05/16/数组与字符串/">数组与字符串</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2018-05-15T16:00:00.000Z" itemprop="datePublished">
-    2018-05-16
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/C语言/">C语言</a> }
-  </li>
-
-
-  </ul>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/study/">study</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
-<li>数组就是在内存中连续的相同类型的变量空间</li>
-<li>数组属于构造数据类型</li>
-<li><ul>
-<li>一个数组可以分解为多个数组元素；这些数组元素可以是基本数据类型货构造类型<blockquote>
-<p>int a【10】<br>struct Stu boy【10】</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>按数组元素类型的不同，数组可以分为：数值数组、字符数组、指针数组、结构数组等类别<blockquote>
-<p>int a【10】;<br>char s【10】;<br>char *p【10】;</p>
-</blockquote>
-</li>
-</ul>
-        
-          <div class="more-link">
-            <a href="/2018/05/16/数组与字符串/#more">Read On »</a>
           </div>
         
       
